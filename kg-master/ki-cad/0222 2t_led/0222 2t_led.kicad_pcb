@@ -1,0 +1,1018 @@
+(kicad_pcb (version 20221018) (generator pcbnew)
+
+  (general
+    (thickness 1.6)
+  )
+
+  (paper "A4")
+  (layers
+    (0 "F.Cu" signal)
+    (31 "B.Cu" signal)
+    (32 "B.Adhes" user "B.Adhesive")
+    (33 "F.Adhes" user "F.Adhesive")
+    (34 "B.Paste" user)
+    (35 "F.Paste" user)
+    (36 "B.SilkS" user "B.Silkscreen")
+    (37 "F.SilkS" user "F.Silkscreen")
+    (38 "B.Mask" user)
+    (39 "F.Mask" user)
+    (40 "Dwgs.User" user "User.Drawings")
+    (41 "Cmts.User" user "User.Comments")
+    (42 "Eco1.User" user "User.Eco1")
+    (43 "Eco2.User" user "User.Eco2")
+    (44 "Edge.Cuts" user)
+    (45 "Margin" user)
+    (46 "B.CrtYd" user "B.Courtyard")
+    (47 "F.CrtYd" user "F.Courtyard")
+    (48 "B.Fab" user)
+    (49 "F.Fab" user)
+    (50 "User.1" user)
+    (51 "User.2" user)
+    (52 "User.3" user)
+    (53 "User.4" user)
+    (54 "User.5" user)
+    (55 "User.6" user)
+    (56 "User.7" user)
+    (57 "User.8" user)
+    (58 "User.9" user)
+  )
+
+  (setup
+    (pad_to_mask_clearance 0)
+    (pcbplotparams
+      (layerselection 0x00010fc_ffffffff)
+      (plot_on_all_layers_selection 0x0000000_00000000)
+      (disableapertmacros false)
+      (usegerberextensions false)
+      (usegerberattributes true)
+      (usegerberadvancedattributes true)
+      (creategerberjobfile true)
+      (dashed_line_dash_ratio 12.000000)
+      (dashed_line_gap_ratio 3.000000)
+      (svgprecision 4)
+      (plotframeref false)
+      (viasonmask false)
+      (mode 1)
+      (useauxorigin false)
+      (hpglpennumber 1)
+      (hpglpenspeed 20)
+      (hpglpendiameter 15.000000)
+      (dxfpolygonmode true)
+      (dxfimperialunits true)
+      (dxfusepcbnewfont true)
+      (psnegative false)
+      (psa4output false)
+      (plotreference true)
+      (plotvalue true)
+      (plotinvisibletext false)
+      (sketchpadsonfab false)
+      (subtractmaskfromsilk false)
+      (outputformat 1)
+      (mirror false)
+      (drillshape 1)
+      (scaleselection 1)
+      (outputdirectory "")
+    )
+  )
+
+  (net 0 "")
+  (net 1 "Net-(D1-K)")
+  (net 2 "Net-(D1-A)")
+  (net 3 "Net-(D2-A)")
+  (net 4 "Net-(D3-A)")
+  (net 5 "Net-(J4-Pin_2)")
+  (net 6 "Net-(J4-Pin_3)")
+  (net 7 "Net-(J4-Pin_4)")
+
+  (footprint "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P5.08mm_Horizontal" (layer "F.Cu")
+    (tstamp 0800542f-4fa8-4f8e-beeb-9a3dfe41fe85)
+    (at 43.18 50.8)
+    (descr "Resistor, Axial_DIN0204 series, Axial, Horizontal, pin pitch=5.08mm, 0.167W, length*diameter=3.6*1.6mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
+    (tags "Resistor Axial_DIN0204 series Axial Horizontal pin pitch 5.08mm 0.167W length 3.6mm diameter 1.6mm")
+    (property "Sheetfile" "0222 2t_led.kicad_sch")
+    (property "Sheetname" "")
+    (property "ki_description" "Resistor")
+    (property "ki_keywords" "R res resistor")
+    (path "/00a812d8-73e8-4c7e-abd0-b19fff7ac668")
+    (attr through_hole)
+    (fp_text reference "R3" (at 2.54 -1.92) (layer "F.SilkS")
+        (effects (font (size 1 1) (thickness 0.15)))
+      (tstamp f6bbda3e-8146-405f-9ca1-cb23fe9fa1bd)
+    )
+    (fp_text value "R" (at 12.7 -5.08) (layer "F.Fab") hide
+        (effects (font (size 1 1) (thickness 0.15)))
+      (tstamp 30fd12e2-17c4-4474-8d0b-6f09f1c4e286)
+    )
+    (fp_text user "${REFERENCE}" (at 2.54 0) (layer "F.Fab")
+        (effects (font (size 0.72 0.72) (thickness 0.108)))
+      (tstamp 3a8cf727-23b3-4569-bedc-a00ce3cd3366)
+    )
+    (fp_line (start 0.62 -0.92) (end 4.46 -0.92)
+      (stroke (width 0.12) (type solid)) (layer "F.SilkS") (tstamp 7e6c5c8f-b10c-4c1b-a612-6cf28e765888))
+    (fp_line (start 0.62 0.92) (end 4.46 0.92)
+      (stroke (width 0.12) (type solid)) (layer "F.SilkS") (tstamp 7d7a4a6a-0e52-4be8-a36e-552beac8ef27))
+    (fp_line (start -0.95 -1.05) (end -0.95 1.05)
+      (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp d7480763-2974-468c-81a1-9727be85791c))
+    (fp_line (start -0.95 1.05) (end 6.03 1.05)
+      (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp b376740e-e309-4293-873b-73d7480ab628))
+    (fp_line (start 6.03 -1.05) (end -0.95 -1.05)
+      (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp 2ecb8ea9-2771-4b9c-a2a7-324445050f8d))
+    (fp_line (start 6.03 1.05) (end 6.03 -1.05)
+      (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp bad1d259-0aef-44a0-a892-ee6510db3e60))
+    (fp_line (start 0 0) (end 0.74 0)
+      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp c2c97ff1-2853-45c4-aefa-7381901e00ee))
+    (fp_line (start 0.74 -0.8) (end 0.74 0.8)
+      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp 5c3ca782-e7c1-480b-96ed-237a53052d13))
+    (fp_line (start 0.74 0.8) (end 4.34 0.8)
+      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp b5e134e0-de31-4250-9eae-4ccfab07aa1a))
+    (fp_line (start 4.34 -0.8) (end 0.74 -0.8)
+      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp 615a619f-4dc4-44d9-b46e-0bd833e726e9))
+    (fp_line (start 4.34 0.8) (end 4.34 -0.8)
+      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp c70766c7-9f0d-4cdd-a310-7f0c5e40b391))
+    (fp_line (start 5.08 0) (end 4.34 0)
+      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp 497af7c5-832b-4169-9e11-76e5e80c9679))
+    (pad "1" thru_hole circle (at 0 0) (size 1.4 1.4) (drill 0.7) (layers "*.Cu" "*.Mask")
+      (net 7 "Net-(J4-Pin_4)") (pintype "passive") (tstamp 9e83d9b3-5518-4dc1-be97-e17419112463))
+    (pad "2" thru_hole oval (at 5.08 0) (size 1.4 1.4) (drill 0.7) (layers "*.Cu" "*.Mask")
+      (net 4 "Net-(D3-A)") (pintype "passive") (tstamp e644d9ab-3e2f-48ac-9db7-b42ecffcef8f))
+    (model "${KICAD6_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Axial_DIN0204_L3.6mm_D1.6mm_P5.08mm_Horizontal.wrl"
+      (offset (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+  )
+
+  (footprint "MountingHole:MountingHole_2.5mm" (layer "F.Cu")
+    (tstamp 14fbd551-cebd-470a-82b8-c720a989248f)
+    (at 33.02 43.18)
+    (descr "Mounting Hole 2.5mm, no annular")
+    (tags "mounting hole 2.5mm no annular")
+    (property "Sheetfile" "0222 2t_led.kicad_sch")
+    (property "Sheetname" "")
+    (property "ki_description" "Mounting Hole without connection")
+    (property "ki_keywords" "mounting hole")
+    (path "/2ac222b1-f7b1-47be-a1fb-43be3edcf11f")
+    (attr exclude_from_pos_files)
+    (fp_text reference "H1" (at 5.08 0) (layer "F.SilkS")
+        (effects (font (size 1 1) (thickness 0.15)))
+      (tstamp 16d79e57-f9b2-462b-a496-3461038d131b)
+    )
+    (fp_text value "MountingHole" (at 0 3.5) (layer "F.Fab")
+        (effects (font (size 1 1) (thickness 0.15)))
+      (tstamp 5e53c88a-3a83-4582-9e0a-ef7aecb97c87)
+    )
+    (fp_text user "${REFERENCE}" (at 0 0) (layer "F.Fab")
+        (effects (font (size 1 1) (thickness 0.15)))
+      (tstamp df9ca89c-7139-4fc7-b917-835b70b93ff1)
+    )
+    (fp_circle (center 0 0) (end 2.5 0)
+      (stroke (width 0.15) (type solid)) (fill none) (layer "Cmts.User") (tstamp ecf51e0a-d9b3-4e80-a4a9-964c6b2be90f))
+    (fp_circle (center 0 0) (end 2.75 0)
+      (stroke (width 0.05) (type solid)) (fill none) (layer "F.CrtYd") (tstamp 189e0556-a193-4b9d-9199-2acb98a493c2))
+    (pad "" np_thru_hole circle (at 0 0) (size 2.5 2.5) (drill 2.5) (layers "*.Cu" "*.Mask") (tstamp 848f9028-b009-4a4e-9911-c698d17cab7b))
+  )
+
+  (footprint "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MPT-0,5-4-2.54_1x04_P2.54mm_Horizontal" (layer "F.Cu")
+    (tstamp 163cd67d-e71b-4be2-96bb-245c168d3bc4)
+    (at 35.56 58.42 90)
+    (descr "Terminal Block Phoenix MPT-0,5-4-2.54, 4 pins, pitch 2.54mm, size 10.6x6.2mm^2, drill diamater 1.1mm, pad diameter 2.2mm, see http://www.mouser.com/ds/2/324/ItemDetail_1725672-916605.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix")
+    (tags "THT Terminal Block Phoenix MPT-0,5-4-2.54 pitch 2.54mm size 10.6x6.2mm^2 drill 1.1mm pad 2.2mm")
+    (property "Sheetfile" "0222 2t_led.kicad_sch")
+    (property "Sheetname" "")
+    (property "ki_description" "Generic screw terminal, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)")
+    (property "ki_keywords" "screw terminal")
+    (path "/00e1ff53-7116-4524-87e5-1323be2502f5")
+    (attr through_hole)
+    (fp_text reference "J4" (at 3.81 -4.16 90) (layer "F.SilkS")
+        (effects (font (size 1 1) (thickness 0.15)))
+      (tstamp 5bca0e7b-8a32-454b-a136-7d51cc754f1f)
+    )
+    (fp_text value "장희찬" (at -7.62 10.16 180) (layer "F.Fab")
+        (effects (font (size 1 1) (thickness 0.15)))
+      (tstamp 414aafb1-a53c-412f-8320-e22baff2029c)
+    )
+    (fp_text user "${REFERENCE}" (at 3.81 2 90) (layer "F.Fab")
+        (effects (font (size 1 1) (thickness 0.15)))
+      (tstamp 057455d4-fc78-4a65-841c-6d56877fc950)
+    )
+    (fp_line (start -1.8 2.66) (end -1.8 3.4)
+      (stroke (width 0.12) (type solid)) (layer "F.SilkS") (tstamp 01a9b0f4-bad9-409f-a5b7-59b937b3b160))
+    (fp_line (start -1.8 3.4) (end -1.3 3.4)
+      (stroke (width 0.12) (type solid)) (layer "F.SilkS") (tstamp 402a475f-cdd1-4461-9e8c-322b4192d81c))
+    (fp_line (start -1.56 -3.16) (end -1.56 3.16)
+      (stroke (width 0.12) (type solid)) (layer "F.SilkS") (tstamp 1953f0ca-e83f-4e49-ace2-4e20bcf6e465))
+    (fp_line (start -1.56 -3.16) (end 9.18 -3.16)
+      (stroke (width 0.12) (type solid)) (layer "F.SilkS") (tstamp 39791179-9cfd-4af0-ac79-f2e18527527d))
+    (fp_line (start -1.56 -2.7) (end 9.18 -2.7)
+      (stroke (width 0.12) (type solid)) (layer "F.SilkS") (tstamp d4b27c6a-9476-4bef-a883-c120276bf8ec))
+    (fp_line (start -1.56 2.6) (end 9.18 2.6)
+      (stroke (width 0.12) (type solid)) (layer "F.SilkS") (tstamp 5aadd4c8-a8a0-4ed8-a392-aaa6d30efa28))
+    (fp_line (start -1.56 3.16) (end 9.18 3.16)
+      (stroke (width 0.12) (type solid)) (layer "F.SilkS") (tstamp 4a1550a5-80d1-464a-aca5-0ebb30b88acf))
+    (fp_line (start 9.18 -3.16) (end 9.18 3.16)
+      (stroke (width 0.12) (type solid)) (layer "F.SilkS") (tstamp a7046a5f-8111-4425-b60c-259828543619))
+    (fp_line (start -2 -3.6) (end -2 3.6)
+      (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp 2ac40055-b433-46b9-8c53-48698ee21563))
+    (fp_line (start -2 3.6) (end 9.63 3.6)
+      (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp 3abb02b1-a255-4651-b89b-c53aa207f599))
+    (fp_line (start 9.63 -3.6) (end -2 -3.6)
+      (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp c6d2f53f-166b-4fd5-86c0-cfe013c3f49d))
+    (fp_line (start 9.63 3.6) (end 9.63 -3.6)
+      (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp 26e3dc7c-1308-45a2-bc89-54a08e73f655))
+    (fp_line (start -1.5 -3.1) (end 9.12 -3.1)
+      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp 28ea9c7c-e8ab-4d2a-949f-738496975075))
+    (fp_line (start -1.5 -2.7) (end 9.12 -2.7)
+      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp 9c7f439d-149d-4d04-8d7a-f9dee20f672e))
+    (fp_line (start -1.5 2.6) (end -1.5 -3.1)
+      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp 2254b775-ed87-4368-9b1b-daa1aad3e755))
+    (fp_line (start -1.5 2.6) (end 9.12 2.6)
+      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp 36a3ca3e-0b86-4bd7-a5a1-d808071f773d))
+    (fp_line (start -1 3.1) (end -1.5 2.6)
+      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp c03038ac-9ada-41b1-9339-780901996378))
+    (fp_line (start 0.701 -0.835) (end -0.835 0.7)
+      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp 515ab2c0-1316-4951-8dd5-187fde9ff207))
+    (fp_line (start 0.835 -0.7) (end -0.701 0.835)
+      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp f323a210-8117-41af-b0b2-87a0a1089e7c))
+    (fp_line (start 3.241 -0.835) (end 1.706 0.7)
+      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp b01a94d4-180a-481d-8c9e-225a04a7d5c2))
+    (fp_line (start 3.375 -0.7) (end 1.84 0.835)
+      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp 87386273-8164-459d-8415-5b5c833ab124))
+    (fp_line (start 5.781 -0.835) (end 4.246 0.7)
+      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp c5f0d082-30c4-47b6-9ad8-4d4a76006912))
+    (fp_line (start 5.915 -0.7) (end 4.38 0.835)
+      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp f6ecbd7f-2e3e-41da-afcb-e4888d843363))
+    (fp_line (start 8.321 -0.835) (end 6.786 0.7)
+      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp eb18260f-101e-4de3-a6f1-d37e495f6ba9))
+    (fp_line (start 8.455 -0.7) (end 6.92 0.835)
+      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp 7ee60a80-44a1-4d61-b435-ade0bef88c37))
+    (fp_line (start 9.12 -3.1) (end 9.12 3.1)
+      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp 71ff6bd5-1c02-443f-b1a4-f0a548a68e9c))
+    (fp_line (start 9.12 3.1) (end -1 3.1)
+      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp cb2c4618-882c-402d-9109-b5954eea5430))
+    (fp_circle (center 0 0) (end 1.1 0)
+      (stroke (width 0.1) (type solid)) (fill none) (layer "F.Fab") (tstamp b0334c14-a3dc-4f50-b794-d6b63adfd37e))
+    (fp_circle (center 2.54 0) (end 3.64 0)
+      (stroke (width 0.1) (type solid)) (fill none) (layer "F.Fab") (tstamp 4fa407f7-b9b5-433b-af36-1c932211e721))
+    (fp_circle (center 5.08 0) (end 6.18 0)
+      (stroke (width 0.1) (type solid)) (fill none) (layer "F.Fab") (tstamp f7974875-17b8-4bfb-a169-dda97dee1257))
+    (fp_circle (center 7.62 0) (end 8.72 0)
+      (stroke (width 0.1) (type solid)) (fill none) (layer "F.Fab") (tstamp eefef85d-a583-43eb-856c-74e33e13cf9d))
+    (pad "1" thru_hole rect (at 0 0 90) (size 2.2 2.2) (drill 1.1) (layers "*.Cu" "*.Mask")
+      (net 1 "Net-(D1-K)") (pinfunction "Pin_1") (pintype "passive") (tstamp b3b8247c-4641-444f-9904-19cd83c0a5e4))
+    (pad "2" thru_hole circle (at 2.54 0 90) (size 2.2 2.2) (drill 1.1) (layers "*.Cu" "*.Mask")
+      (net 5 "Net-(J4-Pin_2)") (pinfunction "Pin_2") (pintype "passive") (tstamp 5ab31d2c-079a-4dba-a9bd-ce0eb7932971))
+    (pad "3" thru_hole circle (at 5.08 0 90) (size 2.2 2.2) (drill 1.1) (layers "*.Cu" "*.Mask")
+      (net 6 "Net-(J4-Pin_3)") (pinfunction "Pin_3") (pintype "passive") (tstamp 56252ebb-a958-40fb-a6e6-2b7904da92d7))
+    (pad "4" thru_hole circle (at 7.62 0 90) (size 2.2 2.2) (drill 1.1) (layers "*.Cu" "*.Mask")
+      (net 7 "Net-(J4-Pin_4)") (pinfunction "Pin_4") (pintype "passive") (tstamp 1fef0f63-f083-4542-85e3-912a78a3b048))
+    (model "${KICAD6_3DMODEL_DIR}/TerminalBlock_Phoenix.3dshapes/TerminalBlock_Phoenix_MPT-0,5-4-2.54_1x04_P2.54mm_Horizontal.wrl"
+      (offset (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+  )
+
+  (footprint "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P5.08mm_Horizontal" (layer "F.Cu")
+    (tstamp 2d6f37f1-9d69-40c1-9f4c-f7ae0f18f708)
+    (at 43.18 53.34)
+    (descr "Resistor, Axial_DIN0204 series, Axial, Horizontal, pin pitch=5.08mm, 0.167W, length*diameter=3.6*1.6mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
+    (tags "Resistor Axial_DIN0204 series Axial Horizontal pin pitch 5.08mm 0.167W length 3.6mm diameter 1.6mm")
+    (property "Sheetfile" "0222 2t_led.kicad_sch")
+    (property "Sheetname" "")
+    (property "ki_description" "Resistor")
+    (property "ki_keywords" "R res resistor")
+    (path "/73027513-ffde-4078-b9b0-e08e49ffe2c7")
+    (attr through_hole)
+    (fp_text reference "R2" (at 7.62 0) (layer "F.SilkS")
+        (effects (font (size 1 1) (thickness 0.15)))
+      (tstamp 397cf968-9b4f-4a4a-a425-9eeef1edb281)
+    )
+    (fp_text value "R" (at 2.54 1.92) (layer "F.Fab") hide
+        (effects (font (size 1 1) (thickness 0.15)))
+      (tstamp 01f397d2-dbda-4d71-9a65-ed77a2ea7a24)
+    )
+    (fp_text user "${REFERENCE}" (at 2.54 0) (layer "F.Fab")
+        (effects (font (size 0.72 0.72) (thickness 0.108)))
+      (tstamp a992a48e-6994-4599-a5e7-3e1ee9dbb77b)
+    )
+    (fp_line (start 0.62 -0.92) (end 4.46 -0.92)
+      (stroke (width 0.12) (type solid)) (layer "F.SilkS") (tstamp 4e32609d-5e8d-4d9c-8fd4-feeed59288dd))
+    (fp_line (start 0.62 0.92) (end 4.46 0.92)
+      (stroke (width 0.12) (type solid)) (layer "F.SilkS") (tstamp acf60377-1012-4d48-a389-8d2bc0b86c91))
+    (fp_line (start -0.95 -1.05) (end -0.95 1.05)
+      (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp 5972d647-a9a3-4e5f-94fc-df9cee6c9636))
+    (fp_line (start -0.95 1.05) (end 6.03 1.05)
+      (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp 1d1c2c27-d2ee-4fe7-ac4f-dbae5db4125a))
+    (fp_line (start 6.03 -1.05) (end -0.95 -1.05)
+      (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp f7532771-8cbf-40c5-8916-0e188880846d))
+    (fp_line (start 6.03 1.05) (end 6.03 -1.05)
+      (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp caee3213-ea17-422e-8f8b-08176191d2f1))
+    (fp_line (start 0 0) (end 0.74 0)
+      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp bc2f77ec-8b32-4799-820e-53b255033a83))
+    (fp_line (start 0.74 -0.8) (end 0.74 0.8)
+      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp f2af6702-c6c3-45a1-a266-8838815a2b60))
+    (fp_line (start 0.74 0.8) (end 4.34 0.8)
+      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp 8766ca7a-e849-4285-b8b4-4265506049f0))
+    (fp_line (start 4.34 -0.8) (end 0.74 -0.8)
+      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp 8c8deff8-9289-4baf-a899-f7a6e1b90969))
+    (fp_line (start 4.34 0.8) (end 4.34 -0.8)
+      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp fa51fa7f-3a7c-4c41-b99d-af53ce22da51))
+    (fp_line (start 5.08 0) (end 4.34 0)
+      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp adf40a27-d0e4-4d7a-963c-af483176f219))
+    (pad "1" thru_hole circle (at 0 0) (size 1.4 1.4) (drill 0.7) (layers "*.Cu" "*.Mask")
+      (net 6 "Net-(J4-Pin_3)") (pintype "passive") (tstamp 033d8558-0e0a-41c0-a2c8-24e9685b41b8))
+    (pad "2" thru_hole oval (at 5.08 0) (size 1.4 1.4) (drill 0.7) (layers "*.Cu" "*.Mask")
+      (net 3 "Net-(D2-A)") (pintype "passive") (tstamp a5f49281-e061-4ef5-a110-4c92a150a3df))
+    (model "${KICAD6_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Axial_DIN0204_L3.6mm_D1.6mm_P5.08mm_Horizontal.wrl"
+      (offset (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+  )
+
+  (footprint "MountingHole:MountingHole_2.5mm" (layer "F.Cu")
+    (tstamp 42eddbb2-1bfd-4323-b814-9bc87d32628e)
+    (at 73.66 66.04)
+    (descr "Mounting Hole 2.5mm, no annular")
+    (tags "mounting hole 2.5mm no annular")
+    (property "Sheetfile" "0222 2t_led.kicad_sch")
+    (property "Sheetname" "")
+    (property "ki_description" "Mounting Hole without connection")
+    (property "ki_keywords" "mounting hole")
+    (path "/6f043bf8-fe63-40be-af54-a99a3697deb3")
+    (attr exclude_from_pos_files)
+    (fp_text reference "H4" (at 0 -3.5) (layer "F.SilkS")
+        (effects (font (size 1 1) (thickness 0.15)))
+      (tstamp d59082d3-8934-452f-8a87-fb734b09faed)
+    )
+    (fp_text value "MountingHole" (at 0 3.5) (layer "F.Fab")
+        (effects (font (size 1 1) (thickness 0.15)))
+      (tstamp 48445f11-534a-45ba-80d9-095a8aef90aa)
+    )
+    (fp_text user "${REFERENCE}" (at -10.49 0) (layer "F.Fab")
+        (effects (font (size 1 1) (thickness 0.15)))
+      (tstamp d924766c-7375-448d-8490-5f5a6ce8c175)
+    )
+    (fp_circle (center 0 0) (end 2.5 0)
+      (stroke (width 0.15) (type solid)) (fill none) (layer "Cmts.User") (tstamp 5f0727c9-6af4-4f68-92cc-e8bb671e63d8))
+    (fp_circle (center 0 0) (end 2.75 0)
+      (stroke (width 0.05) (type solid)) (fill none) (layer "F.CrtYd") (tstamp 5583aed7-07c2-43df-b9bb-c78630fc5f79))
+    (pad "" np_thru_hole circle (at 0 0) (size 2.5 2.5) (drill 2.5) (layers "*.Cu" "*.Mask") (tstamp b16aa50f-ea46-421f-91b6-7bb75c2c7c9f))
+  )
+
+  (footprint "LED_THT:LED_D3.0mm" (layer "F.Cu")
+    (tstamp 460072a4-bb14-4968-8d48-69b78752764d)
+    (at 63.5 55.88 90)
+    (descr "LED, diameter 3.0mm, 2 pins")
+    (tags "LED diameter 3.0mm 2 pins")
+    (property "Sheetfile" "0222 2t_led.kicad_sch")
+    (property "Sheetname" "")
+    (property "ki_description" "Light emitting diode")
+    (property "ki_keywords" "LED diode")
+    (path "/a300c55c-638a-4658-b244-e82adadebec6")
+    (attr through_hole)
+    (fp_text reference "D2" (at 1.27 -2.96 90) (layer "F.SilkS")
+        (effects (font (size 1 1) (thickness 0.15)))
+      (tstamp f1f7aed3-e034-49e1-a5ca-560296182df8)
+    )
+    (fp_text value "LED" (at 1.27 2.96 90) (layer "F.Fab")
+        (effects (font (size 1 1) (thickness 0.15)))
+      (tstamp 2caea24d-7bb4-4f1f-bb80-89624786ffe3)
+    )
+    (fp_line (start -0.29 -1.236) (end -0.29 -1.08)
+      (stroke (width 0.12) (type solid)) (layer "F.SilkS") (tstamp ca511e45-6449-481d-a3e0-8d62d361a6d4))
+    (fp_line (start -0.29 1.08) (end -0.29 1.236)
+      (stroke (width 0.12) (type solid)) (layer "F.SilkS") (tstamp 9fd9ddce-460e-47f5-96b7-a8e75127d56b))
+    (fp_arc (start -0.29 -1.235516) (mid 1.366487 -1.987659) (end 2.942335 -1.078608)
+      (stroke (width 0.12) (type solid)) (layer "F.SilkS") (tstamp d3957763-fb2b-4582-b7db-1633fd92c596))
+    (fp_arc (start 0.229039 -1.08) (mid 1.270117 -1.5) (end 2.31113 -1.079837)
+      (stroke (width 0.12) (type solid)) (layer "F.SilkS") (tstamp 646d3051-ee90-4bd5-acff-a55e6bd3913a))
+    (fp_arc (start 2.31113 1.079837) (mid 1.270117 1.5) (end 0.229039 1.08)
+      (stroke (width 0.12) (type solid)) (layer "F.SilkS") (tstamp d395daee-74b4-411c-a0df-5495699a3f02))
+    (fp_arc (start 2.942335 1.078608) (mid 1.366487 1.987659) (end -0.29 1.235516)
+      (stroke (width 0.12) (type solid)) (layer "F.SilkS") (tstamp b25de2d0-200a-48b0-8148-a36d97d8ac18))
+    (fp_line (start -1.15 -2.25) (end -1.15 2.25)
+      (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp 25121922-1b64-4282-9130-009ff6dd16e7))
+    (fp_line (start -1.15 2.25) (end 3.7 2.25)
+      (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp 29c716e1-3434-4a10-b5fa-f3580732041f))
+    (fp_line (start 3.7 -2.25) (end -1.15 -2.25)
+      (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp a43bfa5f-0c47-4e0e-ac3f-5c9e6533ddc8))
+    (fp_line (start 3.7 2.25) (end 3.7 -2.25)
+      (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp f30941fc-b970-4654-a2e6-ecd84ae77335))
+    (fp_line (start -0.23 -1.16619) (end -0.23 1.16619)
+      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp a0e94838-62c0-4504-9850-4bc666ee2341))
+    (fp_arc (start -0.23 -1.16619) (mid 3.17 0.000452) (end -0.230555 1.165476)
+      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp 4adb192d-3127-4f60-bd7b-e7c2403736c5))
+    (fp_circle (center 1.27 0) (end 2.77 0)
+      (stroke (width 0.1) (type solid)) (fill none) (layer "F.Fab") (tstamp 35ea0196-342d-43c0-a84f-de16d2dfc2a6))
+    (pad "1" thru_hole rect (at 0 0 90) (size 1.8 1.8) (drill 0.9) (layers "*.Cu" "*.Mask")
+      (net 1 "Net-(D1-K)") (pinfunction "K") (pintype "passive") (tstamp 0279805a-dfd1-421e-853d-7b8e08db02e1))
+    (pad "2" thru_hole circle (at 2.54 0 90) (size 1.8 1.8) (drill 0.9) (layers "*.Cu" "*.Mask")
+      (net 3 "Net-(D2-A)") (pinfunction "A") (pintype "passive") (tstamp 89869ffb-0277-46d7-ae7a-9ebd0add83e0))
+    (model "${KICAD6_3DMODEL_DIR}/LED_THT.3dshapes/LED_D3.0mm.wrl"
+      (offset (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+  )
+
+  (footprint "LED_THT:LED_D3.0mm" (layer "F.Cu")
+    (tstamp 974f7bc7-1e04-43a0-ae98-720657613bb3)
+    (at 55.88 55.88 90)
+    (descr "LED, diameter 3.0mm, 2 pins")
+    (tags "LED diameter 3.0mm 2 pins")
+    (property "Sheetfile" "0222 2t_led.kicad_sch")
+    (property "Sheetname" "")
+    (property "ki_description" "Light emitting diode")
+    (property "ki_keywords" "LED diode")
+    (path "/4f63251f-69ca-4e64-a38d-b737c2b11efb")
+    (attr through_hole)
+    (fp_text reference "D1" (at 1.27 -2.96 90) (layer "F.SilkS")
+        (effects (font (size 1 1) (thickness 0.15)))
+      (tstamp bc0a6095-3081-42fb-bb8a-d020b7ade316)
+    )
+    (fp_text value "LED" (at 1.27 2.96 90) (layer "F.Fab")
+        (effects (font (size 1 1) (thickness 0.15)))
+      (tstamp 9f95de74-1a17-4115-9b35-628c89647d71)
+    )
+    (fp_line (start -0.29 -1.236) (end -0.29 -1.08)
+      (stroke (width 0.12) (type solid)) (layer "F.SilkS") (tstamp 46e9ccb6-fe28-451c-b773-8b2bc1d4cd5b))
+    (fp_line (start -0.29 1.08) (end -0.29 1.236)
+      (stroke (width 0.12) (type solid)) (layer "F.SilkS") (tstamp 8b68ead4-4f9e-485e-bb3e-d76dce6b63ad))
+    (fp_arc (start -0.29 -1.235516) (mid 1.366487 -1.987659) (end 2.942335 -1.078608)
+      (stroke (width 0.12) (type solid)) (layer "F.SilkS") (tstamp 29b71def-4cef-4665-9b48-9cc69c542a8e))
+    (fp_arc (start 0.229039 -1.08) (mid 1.270117 -1.5) (end 2.31113 -1.079837)
+      (stroke (width 0.12) (type solid)) (layer "F.SilkS") (tstamp ba92cf3c-80a7-4d3e-a563-490158b4684f))
+    (fp_arc (start 2.31113 1.079837) (mid 1.270117 1.5) (end 0.229039 1.08)
+      (stroke (width 0.12) (type solid)) (layer "F.SilkS") (tstamp 429f2f50-568d-4040-b908-3ec149611ae7))
+    (fp_arc (start 2.942335 1.078608) (mid 1.366487 1.987659) (end -0.29 1.235516)
+      (stroke (width 0.12) (type solid)) (layer "F.SilkS") (tstamp 7811ebc9-bab8-4f58-a94f-66e855ef3aab))
+    (fp_line (start -1.15 -2.25) (end -1.15 2.25)
+      (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp e68d5dee-2d03-43b3-8d36-32ac50b0f3f8))
+    (fp_line (start -1.15 2.25) (end 3.7 2.25)
+      (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp e84a62d0-83ca-409f-add8-4b67e85f68c2))
+    (fp_line (start 3.7 -2.25) (end -1.15 -2.25)
+      (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp d6add4a5-7f4c-4cad-bf71-f9911cb1821e))
+    (fp_line (start 3.7 2.25) (end 3.7 -2.25)
+      (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp b404a139-4fbb-4682-ad95-31e67ccb2afa))
+    (fp_line (start -0.23 -1.16619) (end -0.23 1.16619)
+      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp 1554755c-8032-4f1d-8163-42398d2d6f28))
+    (fp_arc (start -0.23 -1.16619) (mid 3.17 0.000452) (end -0.230555 1.165476)
+      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp c8ee8411-ea25-485e-a17b-29293856fb13))
+    (fp_circle (center 1.27 0) (end 2.77 0)
+      (stroke (width 0.1) (type solid)) (fill none) (layer "F.Fab") (tstamp bca7ee4f-defa-430f-b3bf-bd5bab2fc87f))
+    (pad "1" thru_hole rect (at 0 0 90) (size 1.8 1.8) (drill 0.9) (layers "*.Cu" "*.Mask")
+      (net 1 "Net-(D1-K)") (pinfunction "K") (pintype "passive") (tstamp 0678dcbc-d790-4581-84e8-cef483f1cfaa))
+    (pad "2" thru_hole circle (at 2.54 0 90) (size 1.8 1.8) (drill 0.9) (layers "*.Cu" "*.Mask")
+      (net 2 "Net-(D1-A)") (pinfunction "A") (pintype "passive") (tstamp b126ce48-8aa9-45ab-92fe-f771ec49226b))
+    (model "${KICAD6_3DMODEL_DIR}/LED_THT.3dshapes/LED_D3.0mm.wrl"
+      (offset (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+  )
+
+  (footprint "MountingHole:MountingHole_2.5mm" (layer "F.Cu")
+    (tstamp a8875825-87e7-4a77-8aec-e3b98330d6f1)
+    (at 73.66 43.18)
+    (descr "Mounting Hole 2.5mm, no annular")
+    (tags "mounting hole 2.5mm no annular")
+    (property "Sheetfile" "0222 2t_led.kicad_sch")
+    (property "Sheetname" "")
+    (property "ki_description" "Mounting Hole without connection")
+    (property "ki_keywords" "mounting hole")
+    (path "/b742fcd1-d4e2-46d4-89ac-4a1bf23fa71d")
+    (attr exclude_from_pos_files)
+    (fp_text reference "H2" (at -5.08 0) (layer "F.SilkS")
+        (effects (font (size 1 1) (thickness 0.15)))
+      (tstamp acc8fc32-92b1-47bb-ad71-787673d77c88)
+    )
+    (fp_text value "MountingHole" (at 0 3.5) (layer "F.Fab")
+        (effects (font (size 1 1) (thickness 0.15)))
+      (tstamp 4e3b4b6c-df8e-492f-8c7c-c8a024551031)
+    )
+    (fp_text user "${REFERENCE}" (at 0 0) (layer "F.Fab")
+        (effects (font (size 1 1) (thickness 0.15)))
+      (tstamp 6af0109a-886a-4b5e-ac0a-f9c70bd97a3e)
+    )
+    (fp_circle (center 0 0) (end 2.5 0)
+      (stroke (width 0.15) (type solid)) (fill none) (layer "Cmts.User") (tstamp 36b539b8-a969-40c9-a20e-ecce7ff9e362))
+    (fp_circle (center 0 0) (end 2.75 0)
+      (stroke (width 0.05) (type solid)) (fill none) (layer "F.CrtYd") (tstamp 32a01777-524e-45d7-b6f1-9be4e44bc2dc))
+    (pad "" np_thru_hole circle (at 0 0) (size 2.5 2.5) (drill 2.5) (layers "*.Cu" "*.Mask") (tstamp 943c8ae8-bbbe-4b26-bce2-7b4e4b6e44cc))
+  )
+
+  (footprint "MountingHole:MountingHole_2.5mm" (layer "F.Cu")
+    (tstamp c7aee225-e147-4d8f-8588-cf7b99cdd7fc)
+    (at 33.02 66.04)
+    (descr "Mounting Hole 2.5mm, no annular")
+    (tags "mounting hole 2.5mm no annular")
+    (property "Sheetfile" "0222 2t_led.kicad_sch")
+    (property "Sheetname" "")
+    (property "ki_description" "Mounting Hole without connection")
+    (property "ki_keywords" "mounting hole")
+    (path "/28b5bb7d-0cd4-48b7-91fd-f9c5ad6248ed")
+    (attr exclude_from_pos_files)
+    (fp_text reference "H3" (at 0 -3.5) (layer "F.SilkS")
+        (effects (font (size 1 1) (thickness 0.15)))
+      (tstamp d9b24ba2-6675-483e-ae67-26d9f36b8b5a)
+    )
+    (fp_text value "MountingHole" (at 0 3.5) (layer "F.Fab")
+        (effects (font (size 1 1) (thickness 0.15)))
+      (tstamp 6a67f139-c0d4-4fd4-998b-c6ece78b04e5)
+    )
+    (fp_text user "${REFERENCE}" (at -10.49 0) (layer "F.Fab")
+        (effects (font (size 1 1) (thickness 0.15)))
+      (tstamp b1b49918-9c98-40f2-9161-1780d056038a)
+    )
+    (fp_circle (center 0 0) (end 2.5 0)
+      (stroke (width 0.15) (type solid)) (fill none) (layer "Cmts.User") (tstamp ca96d5fa-8fb1-4bb1-9723-cd3da31bd9d5))
+    (fp_circle (center 0 0) (end 2.75 0)
+      (stroke (width 0.05) (type solid)) (fill none) (layer "F.CrtYd") (tstamp 19e7b0ca-58ef-4f9e-beb4-e401b0ba212e))
+    (pad "" np_thru_hole circle (at 0 0) (size 2.5 2.5) (drill 2.5) (layers "*.Cu" "*.Mask") (tstamp b53ff2ad-e8b2-4b6d-9493-50ac219e0d39))
+  )
+
+  (footprint "LED_THT:LED_D3.0mm" (layer "F.Cu")
+    (tstamp cffd6ff5-95d9-417e-a046-d529b44e1eae)
+    (at 71.12 55.88 90)
+    (descr "LED, diameter 3.0mm, 2 pins")
+    (tags "LED diameter 3.0mm 2 pins")
+    (property "Sheetfile" "0222 2t_led.kicad_sch")
+    (property "Sheetname" "")
+    (property "ki_description" "Light emitting diode")
+    (property "ki_keywords" "LED diode")
+    (path "/bbc73d17-63e7-450c-bb63-205bae862cc0")
+    (attr through_hole)
+    (fp_text reference "D3" (at 1.27 -2.96 90) (layer "F.SilkS")
+        (effects (font (size 1 1) (thickness 0.15)))
+      (tstamp 10ca2cb2-ca96-4ee5-b8b4-626c59b580da)
+    )
+    (fp_text value "LED" (at 1.27 2.96 90) (layer "F.Fab")
+        (effects (font (size 1 1) (thickness 0.15)))
+      (tstamp 9c9f02df-48d8-4563-a635-24b26d5ee2df)
+    )
+    (fp_line (start -0.29 -1.236) (end -0.29 -1.08)
+      (stroke (width 0.12) (type solid)) (layer "F.SilkS") (tstamp ce985db4-24e9-423d-9285-75dccd15b476))
+    (fp_line (start -0.29 1.08) (end -0.29 1.236)
+      (stroke (width 0.12) (type solid)) (layer "F.SilkS") (tstamp ef961803-8d49-408d-8337-306eb314b966))
+    (fp_arc (start -0.29 -1.235516) (mid 1.366487 -1.987659) (end 2.942335 -1.078608)
+      (stroke (width 0.12) (type solid)) (layer "F.SilkS") (tstamp fe69cb80-dcb3-4e45-bb03-ecdcef9b650d))
+    (fp_arc (start 0.229039 -1.08) (mid 1.270117 -1.5) (end 2.31113 -1.079837)
+      (stroke (width 0.12) (type solid)) (layer "F.SilkS") (tstamp 776db3ef-bb00-4472-9643-e88770228b79))
+    (fp_arc (start 2.31113 1.079837) (mid 1.270117 1.5) (end 0.229039 1.08)
+      (stroke (width 0.12) (type solid)) (layer "F.SilkS") (tstamp f251212a-45c8-48f6-849b-286f8f4800b6))
+    (fp_arc (start 2.942335 1.078608) (mid 1.366487 1.987659) (end -0.29 1.235516)
+      (stroke (width 0.12) (type solid)) (layer "F.SilkS") (tstamp 2349847f-cd03-444d-bab2-dba3a1717444))
+    (fp_line (start -1.15 -2.25) (end -1.15 2.25)
+      (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp fa81ff19-404c-4d9b-a455-4699a52aa818))
+    (fp_line (start -1.15 2.25) (end 3.7 2.25)
+      (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp 71863570-75f9-4bd2-a972-0b4b0da63257))
+    (fp_line (start 3.7 -2.25) (end -1.15 -2.25)
+      (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp 85c0b665-f7f5-41f1-ab2d-249ab7ba1fa5))
+    (fp_line (start 3.7 2.25) (end 3.7 -2.25)
+      (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp 6c7a9e64-11c2-4980-b7a0-e966f488a4fb))
+    (fp_line (start -0.23 -1.16619) (end -0.23 1.16619)
+      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp 70d34d82-329c-405c-8b3d-d5a0346709fb))
+    (fp_arc (start -0.23 -1.16619) (mid 3.17 0.000452) (end -0.230555 1.165476)
+      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp 6755073e-5560-4f49-bc57-1dbe4b374d54))
+    (fp_circle (center 1.27 0) (end 2.77 0)
+      (stroke (width 0.1) (type solid)) (fill none) (layer "F.Fab") (tstamp cb6ed426-a514-434e-9061-4cadfc55fe7b))
+    (pad "1" thru_hole rect (at 0 0 90) (size 1.8 1.8) (drill 0.9) (layers "*.Cu" "*.Mask")
+      (net 1 "Net-(D1-K)") (pinfunction "K") (pintype "passive") (tstamp 9822c5de-c8cc-4956-bcc0-b82097b39dab))
+    (pad "2" thru_hole circle (at 2.54 0 90) (size 1.8 1.8) (drill 0.9) (layers "*.Cu" "*.Mask")
+      (net 4 "Net-(D3-A)") (pinfunction "A") (pintype "passive") (tstamp b13645e9-83ca-4b5b-b244-d4a031d114ad))
+    (model "${KICAD6_3DMODEL_DIR}/LED_THT.3dshapes/LED_D3.0mm.wrl"
+      (offset (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+  )
+
+  (footprint "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P5.08mm_Horizontal" (layer "F.Cu")
+    (tstamp d5b9dfd1-fb55-43c5-a27b-1516729e86f5)
+    (at 43.18 55.88)
+    (descr "Resistor, Axial_DIN0204 series, Axial, Horizontal, pin pitch=5.08mm, 0.167W, length*diameter=3.6*1.6mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
+    (tags "Resistor Axial_DIN0204 series Axial Horizontal pin pitch 5.08mm 0.167W length 3.6mm diameter 1.6mm")
+    (property "Sheetfile" "0222 2t_led.kicad_sch")
+    (property "Sheetname" "")
+    (property "ki_description" "Resistor")
+    (property "ki_keywords" "R res resistor")
+    (path "/3f733a1c-c5eb-493e-8568-0d1fa903ed53")
+    (attr through_hole)
+    (fp_text reference "R1" (at 7.62 0) (layer "F.SilkS")
+        (effects (font (size 1 1) (thickness 0.15)))
+      (tstamp f68ab743-feda-4019-bc96-1f93759045a0)
+    )
+    (fp_text value "R" (at 2.54 1.92) (layer "F.Fab")
+        (effects (font (size 1 1) (thickness 0.15)))
+      (tstamp 05219f7e-a992-4002-b105-de05d7fefa95)
+    )
+    (fp_text user "${REFERENCE}" (at 2.54 0) (layer "F.Fab")
+        (effects (font (size 0.72 0.72) (thickness 0.108)))
+      (tstamp 00ae6ad2-2487-450a-9f19-bb959b7bb94e)
+    )
+    (fp_line (start 0.62 -0.92) (end 4.46 -0.92)
+      (stroke (width 0.12) (type solid)) (layer "F.SilkS") (tstamp 0e246776-5fb4-4937-b317-655ae3485714))
+    (fp_line (start 0.62 0.92) (end 4.46 0.92)
+      (stroke (width 0.12) (type solid)) (layer "F.SilkS") (tstamp 65b13e5b-4b95-4fb6-904c-741ec59e3b75))
+    (fp_line (start -0.95 -1.05) (end -0.95 1.05)
+      (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp da5eeb02-fe87-4b2d-bb68-5cbfa1263e3e))
+    (fp_line (start -0.95 1.05) (end 6.03 1.05)
+      (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp d2e9a715-7947-4b32-8b7d-8e4db6f1fe3d))
+    (fp_line (start 6.03 -1.05) (end -0.95 -1.05)
+      (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp 5f75f4bc-c8b2-4281-96fa-69d55c8fdaf7))
+    (fp_line (start 6.03 1.05) (end 6.03 -1.05)
+      (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp 32597728-6d56-45bd-b0b9-80bd6821c12e))
+    (fp_line (start 0 0) (end 0.74 0)
+      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp 1e437513-9cd6-48c4-8faa-29f808292676))
+    (fp_line (start 0.74 -0.8) (end 0.74 0.8)
+      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp 60e1421b-9476-419c-9eef-4e520124cb4f))
+    (fp_line (start 0.74 0.8) (end 4.34 0.8)
+      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp e7d541b3-e52f-4820-955d-87130b914a0c))
+    (fp_line (start 4.34 -0.8) (end 0.74 -0.8)
+      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp bf71c508-42fa-454b-8e5b-76b1259ef08c))
+    (fp_line (start 4.34 0.8) (end 4.34 -0.8)
+      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp 8b5b6f81-5635-49e7-9777-7f2e650c6808))
+    (fp_line (start 5.08 0) (end 4.34 0)
+      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp edacd760-f460-4da9-9abf-508d044111e5))
+    (pad "1" thru_hole circle (at 0 0) (size 1.4 1.4) (drill 0.7) (layers "*.Cu" "*.Mask")
+      (net 5 "Net-(J4-Pin_2)") (pintype "passive") (tstamp 2b2bfe9b-1c0c-4d94-b581-c5033d923661))
+    (pad "2" thru_hole oval (at 5.08 0) (size 1.4 1.4) (drill 0.7) (layers "*.Cu" "*.Mask")
+      (net 2 "Net-(D1-A)") (pintype "passive") (tstamp 17571c3a-b5e3-4d85-af11-1cb1e5fbf215))
+    (model "${KICAD6_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Axial_DIN0204_L3.6mm_D1.6mm_P5.08mm_Horizontal.wrl"
+      (offset (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+  )
+
+  (gr_rect (start 30.48 40.64) (end 76.2 68.58)
+    (stroke (width 0.1) (type default)) (fill none) (layer "Edge.Cuts") (tstamp 5219e333-24c9-4439-8057-4facdd3c8c65))
+  (image (at 63.5 60.96) (layer "F.Cu") (scale 0.0378718)
+    (data
+      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
+      AJB8F1100a233lrznoKCgt/+9rfr1q37wQ9+UJEL33vvvS+++OLFF18ciyC3bt26YMGCxx9/PLaa
+      kpIyatSozp07f/TRR7GzrVq1uvjii88444z4ofjyM82fP3/evHmHDh0aPHjweeedlzBMyP62bt2a
+      k5Ozfft2f7BHm3feeefOO+989913jz/++Fgm0759+65duw4YMKByRHPw4MF169Z997vfnTNnTiwX
+      Likpeffdd//rv/5rw4YNlc/WvErtZWZm3nvvvVUuLV68+KabbqrbY90vXEc5OTnz589fd1gIYerU
+      qdWtrlu3bsKECaNGjcrNzf3Ms1GTk5MzZcqUvLy8UaNGrV69OtnlAAAA0GR06tRpxYoVw4YNS5if
+      NGnSrFmzYp9jv3FX/A4+f/78nJyc+LOxzQnDRn6RpmjWrFmTJk0aNmzYihUrOnXqlDBM2Dx16tTZ
+      s2cnpU5qFvsry8rKmjlzZuy/kUcfffTKK6+sMqJZvXr1qFGj8vLyKmZyc3NHjRo1YcKEKs/WvErS
+      yYXrYtq0aaWlpXfddVfLwyZOnJidnT1u3Li8vLzKqy1btkxNTS0qKiovL6/5bLLfLAlKS0uLi4vL
+      y8uLiorKysqSXQ4AAABNRkpKSkZGRmpq6pw5c6ZNm5aXlzdu3Lhnn302LS0tPT19796948aNy87O
+      njhxYsXv4HfddVdpaem0adMqzsY2JwyT/WZNQHp6elpaWmpqakZGRkpKyv/5P/8nLS3tnnvuiQ0r
+      tsX+UrKzs6+55prkFUu1Kv4G09PTY/+NdOvW7fHHH1+wYMGcOXPid86ZM2fBggXz5s3r2LFjbOa5
+      556bOHHib3/722HDhlU+W/NqMt6VRHLhunjzzTdDCKeddlrFTM+ePbt06bJu3bqioqLKqyGEvn37
+      3n777e3atav5bCO9wFEj9n+knTRpUrt27e64447nn39++fLlyS4KAACAJiZ2w2ZRUdG6des+/PDD
+      2GRs2KVLl549e1bsjP0+HvvdnHpUZRgSqvlb4GiWkZExePDg3bt379ixI35+x44du3fvHjx4cEZG
+      Rmxm3759r776ar9+/dq3b1/5bM2rjflGVMf9wnUxYsSIhOuAN27c+Pbbb3/rW9+quEBn+/bt8Z3l
+      BgwYcOKJJzZ2oUe9JUuWDBo0aMyYMUuWLLn22mtvuummY445Jjs7O9l1AQAAALVSWFi4ZMmSU089
+      teKK5wrbt29fvnz5mDFjevbsGbthliYqlnGNGDEi2YVQn+TCdTF58uT44datWxcuXJibm3v//ffH
+      Zvbs2fPXv/51xowZseE3v/nN9u3bR7azHAAAADSozp07t2/f/t133z355JMPHjxY+4O9evUKIWzd
+      uvX4449/991327dvn5WV1WBlNkMHDx5cv379/ffff9ttt5133nkJqxs3bvzZz362du3a7t27L1y4
+      MBkFUj9+9atfDRo0aPLkyTt37kx2LdQb90jUg9gd9vHX0s+ePVtnOQAAAGgckyZNmjBhwpVXXvno
+      o49WbkNXg9jv8lOnTq1okHXjjTc2WJnN0OrVq+vwxw4cDeTCn0vF7ekTJ06Mv5b+mmuu0VmuZrE/
+      urFjx06cOLFi8u677w4hTJs2LXl1AQAA0PTEGqAVFxenp6enph5B1hH7Xb6iHXpqamqLFi0arMxm
+      6Ctf+crvfve7m2666YUXXkhYmjNnzqJFixYuXNipU6ek1Ea9qDLAoXmQC9fdpk2bfv7zn3/ta18b
+      MWJEwu3pPXv21FmuZq7/BwAAgKauQ4cOQ4cOvfjii5csWZLQSb5ymzKaIp0DmzH3C9fRxo0bY1du
+      X3PNNZmZmckup4mJv3g+Yal///4HDx7885//PGbMmIomfgAAAFCznj17xneDp9G0adNm4sSJY8eO
+      je8k/8wzz2zcuHH79u2///3vYzOxod/3m5bt27c/8cQThYWFzzzzzN69e0MI+/fvjw3FxM2AXLgu
+      Yo3m8vLy7rvvvorJgwcP/vOf/zz55JOTWFhTsWXLlrlz5z722GOVr/MfP358+/btb7vttq997Wv+
+      9wQAAAC1NGDAgAEDBtThYOfOnTt06PDOO+984QtfOO644+q9sIjo3bt3CGHr1q2xDwsWLHj33XdD
+      CDNnzoxt2L1796FDh2bPnu33/SZky5YtDz/8cM+ePVetWrVq1aoQQnFxcUFBwYIFC/r06dOjR49k
+      F8jnIheuiylTpvTv3z++0VwIYfXq1d/97ncr36dDZUOHDl2xYkVaWtX//GpeBQAAgHo0adKk7t27
+      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
+      pLy8/Prrr58+fXr8zvLy8t27d48fP/65556rmCwpKZk2bVpKSsoLhy1evHjOnDkVj6phFQAAAACo
+      Pbkw9W/27NlTpkzJzc3Nzs5evXp15Q2rV6++8sorH3300WHDhsVmYpsnTJhw4403VmybNWtWCKHi
+      UdWtNuzLAAAAAECz4x4J6t/u3bvff//94uLiN95448CBA5U3HDhwYPPmzaeccspxxx0Xm4lt7tCh
+      Q5cuXSq2nXjiiSGE999/v02bNtddd90555xT5WqDvgsAAAAAND9yYRrb2rVr33jjjWuuuaZNmza1
+      PNK6detLL700YXLp0qUhhNGjR9dzfQAAAADQ3MmFqX89evTo3Lnzpk2b+vbte+jQoYTVZcuWrV+/
+      ftGiRXV48o4dO3bs2BH7/OSTT5599tnXX3/95y0XAAAAACJGLkz9u/766wcOHHjttdeuXbv2pptu
+      il+KtYlr0aJF3Z78yCOP3H777bHP8+bNu/DCCz9nqQAAAAAQQXJhGtWUKVM6duw4c+bMuh2fNGnS
+      2LFjY59nzZq1a9euhNwZAAAAAPhMqckugGiJtYmLtYyrgy5duvQ/7Iorrti9e/evf/3r+qwPAAAA
+      ACLA94VpECeccEJCZ7mCgoJ58+a9//77paWlv/nNb2KTseHSpUvPPPPMI/0RX//615977rmnn376
+      +9//fr3VDQAAAAARIBemQZxxxhlnnHFG/MyhQ4eeeOKJNm3a7Nu3749//GNscseOHR9++OHf/va3
+      mnPhoqKiTZs2nXjiie3bt2/AogEAAAAgGuTCNJJOnTotXrw4YXLs2LGDBg269dZbd+3alZaWVlZW
+      VlZWlpr6r+tNKprU7d2796KLLvr1r3994YUXVl5txJcAAAAAgObA/cIcFTp16rRixYonn3xy9uzZ
+      FZNTpkwJIcyaNavm1cavFgAAAACaNN8Xpt7s37//tttu27hx4/bt2zMzM6+++ur44eTJk2vYPHny
+      5C9+8YtXXHHFc889N3HixNieL33pSyNGjDjhhBNCCDWvAgAAAAC1Jxem3qSkpLRq1Wrs2LEhhJYt
+      WyYMa94cm/z6179eVFSUm5sbG44cOTL+kuKaVwEAAACAWpILU2/atWv385//PH4mYVjz5pjRo0eP
+      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
+    )
+  )
+  (gr_text "HeeChan" (at 48.26 66.04) (layer "F.Cu") (tstamp 868c101a-1dab-4a3f-999a-821bd36200ef)
+    (effects (font (size 1.5 1.5) (thickness 0.3) bold) (justify left bottom))
+  )
+  (gr_text "GND" (at 38.1 66.04 90) (layer "F.Cu") (tstamp 9e138639-c0eb-4d75-89e0-80449b3e3709)
+    (effects (font (size 1.5 1.5) (thickness 0.3) bold) (justify left bottom))
+  )
+  (gr_text "GND" (at 40.64 60.96 90) (layer "Edge.Cuts") (tstamp 113b5a5a-ed5e-4000-97ff-bce1213ef302)
+    (effects (font (size 1 1) (thickness 0.15)) (justify left bottom))
+  )
+  (gr_text "장" (at 43.18 63.5) (layer "Edge.Cuts") (tstamp af29e9f6-9b60-4fbd-84a2-bb499b270e0c)
+    (effects (font (size 1 1) (thickness 0.15)) (justify left bottom))
+  )
+
+  (segment (start 53.34 58.42) (end 35.56 58.42) (width 0.25) (layer "F.Cu") (net 1) (tstamp c670d8b2-cfc9-4627-b5a4-dc82f627bef6))
+  (segment (start 55.88 55.88) (end 53.34 58.42) (width 0.25) (layer "F.Cu") (net 1) (tstamp d99c6261-7e47-4445-8186-672f5d93274b))
+  (segment (start 71.12 55.88) (end 63.5 55.88) (width 0.25) (layer "F.Cu") (net 1) (tstamp e57801b9-285f-42f4-ab87-b8f724a87fb9))
+  (segment (start 55.88 55.88) (end 63.5 55.88) (width 0.25) (layer "F.Cu") (net 1) (tstamp f391f377-fdd4-4933-9546-dfba7d763c36))
+  (segment (start 53.34 55.88) (end 55.88 53.34) (width 0.25) (layer "F.Cu") (net 2) (tstamp 469daed0-3c1c-4d28-bc31-f3967d46ced3))
+  (segment (start 48.26 55.88) (end 53.34 55.88) (width 0.25) (layer "F.Cu") (net 2) (tstamp ce0b89d9-355c-454b-b5e0-13ba57e38cea))
+  (segment (start 48.26 53.34) (end 50.8 50.8) (width 0.25) (layer "F.Cu") (net 3) (tstamp 072970da-36f9-446d-ad92-7fafbcfb4f01))
+  (segment (start 50.8 50.8) (end 60.96 50.8) (width 0.25) (layer "F.Cu") (net 3) (tstamp a003adb2-a798-4296-a6e3-d331db3b9c7a))
+  (segment (start 60.96 50.8) (end 63.5 53.34) (width 0.25) (layer "F.Cu") (net 3) (tstamp dd80b4f4-7d5e-467c-8c2e-cf9a0a0752ed))
+  (segment (start 50.8 48.26) (end 66.04 48.26) (width 0.25) (layer "F.Cu") (net 4) (tstamp 65a9f1db-e4ee-4a5b-9d6f-dca55be75366))
+  (segment (start 66.04 48.26) (end 71.12 53.34) (width 0.25) (layer "F.Cu") (net 4) (tstamp 7c32ebaf-aefe-4282-b0ea-228eb6f4cd26))
+  (segment (start 48.26 50.8) (end 50.8 48.26) (width 0.25) (layer "F.Cu") (net 4) (tstamp 9f5e5dc1-067c-47d5-a5ee-bf21aff08626))
+  (segment (start 35.56 55.88) (end 43.18 55.88) (width 0.25) (layer "F.Cu") (net 5) (tstamp 1fe51a28-efc3-47b2-aaea-ec497230c764))
+  (segment (start 35.56 53.34) (end 43.18 53.34) (width 0.25) (layer "F.Cu") (net 6) (tstamp c47cf442-9035-4176-b277-c97279996f9b))
+  (segment (start 35.56 50.8) (end 43.18 50.8) (width 0.25) (layer "F.Cu") (net 7) (tstamp 5f76d507-f078-4152-8ff4-f827887f5175))
+
+)

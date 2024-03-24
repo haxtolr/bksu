@@ -1,0 +1,5 @@
+DESCR DDE-Komponenten
+217 2 782 630 0.500000
+1 1 ..
+2 1 dde2.ct
+3 1 dde1.ct
