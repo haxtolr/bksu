@@ -359,5 +359,7 @@ CATKIN_IGNORE
 # 피피티 파일
 *.ppt 
 *.pptx
+*.pdf 
+
 
 # End of https://www.toptal.com/developers/gitignore/api/c,visualstudiocode,c++,cmake,python,java,ros
