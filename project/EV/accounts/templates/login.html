@@ -1,0 +1,25 @@
+<!-- accounts/templates/login.html -->
+{% load bootstrap4 %}
+{% block content %}
+<div class="wrapper" style="text-align: center;">
+    {% if messages %}
+    <div>
+        {% for message in messages %}
+            {{ message.tags }}! {{ message.message }}
+        {% endfor %}
+    </div>
+{% endif %}
+
+    <h1>로그인</h1>
+    <form method="POST">
+        {% csrf_token %}
+        아이디: <br>
+        {{ form.username }}
+        <br>
+        비밀번호: <br>
+        {{ form.password }}
+        <br><br>
+        <input type="submit" class="btn btn-primary" value="Log In">
+    </form>
+</div>
+{% endblock %}

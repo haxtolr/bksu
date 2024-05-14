@@ -1,0 +1,83 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mui/mui-toolpad/v0.1.55/docs/schemas/v1/definitions.json#properties/Page
+
+apiVersion: v1
+kind: page
+spec:
+  title: Default page
+  alias:
+    - RnkdY_u
+  displayName: Page
+  display: shell
+  maxWidth: lg
+  content:
+    - component: Container
+      name: container
+      children:
+        - component: Tabs
+          name: tabs
+          layout:
+            horizontalAlign: start
+    - component: Autocomplete
+      name: autocomplete
+      props:
+        fullWidth: false
+        loading: false
+        options:
+          - ""
+        isRequired: false
+        size: small
+      layout:
+        horizontalAlign: end
+        verticalAlign: center
+    - component: PageRow
+      name: pageRow
+      props:
+        justifyContent: start
+      children:
+        - component: Container
+          name: container1
+          children:
+            - component: DataGrid
+              name: dataGrid
+              layout:
+                height: 876
+          layout:
+            columnSize: 0.48806380035052993
+        - component: Container
+          name: container2
+          layout:
+            columnSize: 1.51193619964947
+          children:
+            - component: PageRow
+              name: pageRow2
+              props:
+                justifyContent: start
+              children:
+                - component: Paper
+                  name: paper
+                  children:
+                    - component: Image
+                      name: image1
+                      layout:
+                        columnSize: 1
+                        horizontalAlign: center
+                      props:
+                        fit: fill
+                        src: ""
+                        alt: fmdfmdfka
+                - component: Image
+                  name: image
+                  layout:
+                    horizontalAlign: center
+                  props:
+                    alt: fdfadf
+                    fit: fill
+                - component: Image
+                  name: image2
+                  layout:
+                    horizontalAlign: center
+                    columnSize: 1
+                    verticalAlign: center
+                  props:
+                    alt: fdfaf
+                    fit: fill

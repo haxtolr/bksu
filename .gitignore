@@ -360,6 +360,7 @@ CATKIN_IGNORE
 *.ppt 
 *.pptx
 *.pdf 
+.DS_Store
 
 
 # End of https://www.toptal.com/developers/gitignore/api/c,visualstudiocode,c++,cmake,python,java,ros

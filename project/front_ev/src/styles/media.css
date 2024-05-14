@@ -1,0 +1,31 @@
+@media (max-width: 480px) {
+
+  .layout{
+    padding: 10px;
+  }
+  .card-container {
+    flex-direction: column;
+  }
+  .cart {
+    display: none;
+  }
+  .card {
+    margin: 0;
+    width: calc(100% - 16px);
+  }
+  .card-image {
+    height: auto;
+  }
+  .card-title {
+    font-size: 1.2rem;
+  }
+
+  .card-button {
+    
+    width: 30px;  /* 버튼의 너비 */
+    height: 30px; /* 버튼의 높이 */
+  }
+  .card-button-text {
+    display: none; /* 장바구니 추가 문구를 숨김 */
+  }
+}
