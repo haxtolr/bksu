@@ -6,6 +6,7 @@ import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import config from './config.js';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../components/AuthProvider.js';
 
 import '../styles/media.css';
 
@@ -14,12 +15,22 @@ const Home = ({ cart, addToCart, removeFromCart }) => {
   const [products, setProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [page, setPage] = useState(1);
+  const { authState } = useAuth();
 
   const fetchData = async () => {
     try {
-      const response = await fetch(`${config.baseURL}products/getpro/`);
+      const response = await fetch(`${config.baseURL}products/getpro/`, {
+        headers: {
+          'Authorization': `Token ${authState.token}`
+        },
+      });
       const data = await response.json();
-      setProducts(data); // 상품 데이터를 상태로 설정
+      if (!Array.isArray(data)) {
+        console.error('Data is not an array');
+        setProducts([]); // 데이터가 배열이 아닐 경우 빈 배열을 설정
+      } else {
+        setProducts(data); // 상품 데이터를 상태로 설정
+      }
     } catch (error) {
       console.error('Error fetching data:', error);
     }
@@ -44,15 +55,6 @@ const Home = ({ cart, addToCart, removeFromCart }) => {
     return pageNumber;
   };
   
-  //const filteredItems = items.filter(item => {
-  //  if (searchTerm) {
-  //    return item.title.includes(searchTerm);
-  //  }
-  //  // 그렇지 않으면 페이지 위치에 맞는 아이템만 필터링
-  //  else {
-  //    return getPageNumber(item.description3) === page;
-  //  }
-  //});
 
   const handlePrevPage = () => {
    setPage(prevPage => prevPage > 1 ? prevPage - 1 : 4);

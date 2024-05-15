@@ -76,6 +76,7 @@ def reset_week_time(sender, instance, **kwargs):
     if timezone.now().weekday() == 0 and timezone.now().hour == 0:
         instance.week_time = timezone.now()
 
+@receiver(pre_save, sender=User)
 def reset_day_time(sender, instance, **kwargs):
     if timezone.now().hour == 0:
         instance.day_time = timezone.now()

@@ -25,7 +25,8 @@ class Order(models.Model):
     agv_id = models.ForeignKey(Agv, on_delete=models.SET_NULL, null=True, blank=True, related_name='orders')
     order_accepted = models.BooleanField(default=False)
     destination = models.CharField(max_length=255)
-    estimated_time = models.DateTimeField()
+    order_time = models.DateTimeField(auto_now=True)
+    estimated_time = models.DateTimeField(null=True)
 
 class Arm(models.Model):
     STATUS_CHOICES = [
