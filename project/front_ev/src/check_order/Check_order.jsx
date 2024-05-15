@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { Card, CardContent, Typography, Button } from '@material-ui/core';
-import { Label } from "../components/ui/label"
+import { Card, CardContent, Typography} from '@material-ui/core';
 import Select from 'react-select';
 import DeleteIcon from '@mui/icons-material/Delete';
+import DeliveryStatus from '../check_order/DeliveryStatus.jsx';
+import DeliveryButton from './DeliveryBotton.jsx';
 
 function Check_order({ cart, removeFromCart }) {
   const [location, setLocation] = useState('');
+  const { status,reason } = DeliveryStatus({ cart }); // 상태 가져오기
 
   const homeStyle = {
     backgroundColor: '#D8BFD8',
@@ -13,7 +15,6 @@ function Check_order({ cart, removeFromCart }) {
     borderRadius: '10px',
     padding: '10px'
   };
-
 
   const options = [
     { value: 'a', label: 'a' },
@@ -82,7 +83,20 @@ function Check_order({ cart, removeFromCart }) {
         배송 준비</h4>
         <div style={{ backgroundColor: '#f8f8f8', padding: '20px', borderRadius: '10px', margin: '10px 0' }}>
           <p style={{ fontSize: '40px', margin: '10px 0' }}>배송 가능 여부</p>
-          <div style={{ height: '40px', width: '99%', backgroundColor: 'green', margin: '10px', borderRadius: '15px' }}></div>
+          <div style={{ 
+                        height: '40px', 
+                        width: '99%', 
+                        backgroundColor: status ? 'green' : 'red', 
+                        margin: '10px', 
+                        borderRadius: '15px'}}>
+              </div>
+              {reason && !status &&
+                    <p style={{
+                        fontWeight: 'bold', // 글씨 두껍게
+                        fontFamily: 'Arial, sans-serif', // 글꼴 변경
+                        color: '#333',}}>
+                     {reason} </p>
+              }
         </div>
         <div style={{ backgroundColor: '#f8f8f8', padding: '20px', borderRadius: '10px', margin: '10px 0' }}>
            <label htmlFor="location" style={{ fontSize: '40px', margin: '30px 30px' }}>배송 받을 위치</label>
@@ -93,9 +107,7 @@ function Check_order({ cart, removeFromCart }) {
                 onChange={(e) => setLocation(e.value)}
               />
         </div>
-        <Button variant="contained" color="primary" style={{ marginTop: '20px', fontSize: '20px', padding: '15px 30px' }}>
-          배송 
-        </Button>
+        <DeliveryButton cart={cart} deliveryLocation={location} />
       </div>
     </div>
   );
