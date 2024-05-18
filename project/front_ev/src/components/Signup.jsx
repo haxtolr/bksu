@@ -91,18 +91,18 @@ export default function Component() {
   return (
     <>
     <ToastContainer />
-    <div className="flex h-screen w-full items-center justify-center bg-[#e0e0ff] dark:bg-[#2a2a3e]">
-      <div className="mx-4 w-full max-w-md space-y-6 rounded-lg bg-white p-6 shadow-lg dark:bg-[#3c3c4f]">
+    <div className="flex h-screen w-full items-center justify-center bg-[#e0e0ff]">
+      <div className="mx-4 w-full max-w-md space-y-6 rounded-lg bg-white p-6 shadow-lg ">
         <div className="flex items-center justify-center">
-          <h1 className="text-3xl font-bold text-[#5b5b8c] dark:text-white">회원가입</h1>
+          <h1 className="text-3xl font-bold text-[#5b5b8c] ">회원가입</h1>
         </div>
         <div className="space-y-4">
           <div>
-            <Label className="text-[#5b5b8c] dark:text-white" htmlFor="username">
+            <Label className="text-[#5b5b8c]" htmlFor="username">
               아이디
             </Label>
             <Input
-              className="mt-1 w-full rounded-md border border-[#d0d0e0] bg-[#f8f8f8] px-3 py-2 text-[#5b5b8c] placeholder:text-[#a0a0b0] focus:border-[#9090c0] focus:outline-none dark:border-[#606080] dark:bg-[#3c3c4f] dark:text-white dark:placeholder:text-[#808090]"
+              className="mt-1 w-full rounded-md border border-[#d0d0e0] bg-[#f8f8f8] px-3 py-2 text-[#5b5b8c] placeholder:text-[#a0a0b0] focus:border-[#9090c0] focus:outline-none"
               id="username"
               placeholder="아이디를 입력하세요"
               required
@@ -117,11 +117,11 @@ export default function Component() {
             {usernameExists && <p className="mt-1 text-sm text-red-500">이미 존재하는 아이디입니다.</p>}
           </div>
           <div>
-            <Label className="text-[#5b5b8c] dark:text-white" htmlFor="password">
+            <Label className="text-[#5b5b8c]" htmlFor="password">
               비밀번호
             </Label>
             <Input
-              className="mt-1 w-full rounded-md border border-[#d0d0e0] bg-[#f8f8f8] px-3 py-2 text-[#5b5b8c] placeholder:text-[#a0a0b0] focus:border-[#9090c0] focus:outline-none dark:border-[#606080] dark:bg-[#3c3c4f] dark:text-white dark:placeholder:text-[#808090]"
+              className="mt-1 w-full rounded-md border border-[#d0d0e0] bg-[#f8f8f8] px-3 py-2 text-[#5b5b8c] placeholder:text-[#a0a0b0] focus:border-[#9090c0] focus:outline-none"
               id="password"
               placeholder="비밀번호를 입력하세요"
               required
@@ -137,11 +137,11 @@ export default function Component() {
             {(password.length < 8) && <p className="mt-1 text-sm text-red-500">비밀번호는 8자 이상이어야 합니다.</p>}
           </div>
           <div>
-            <Label className="text-[#5b5b8c] dark:text-white" htmlFor="password-confirm">
+            <Label className="text-[#5b5b8c] " htmlFor="password-confirm">
               비밀번호 확인
             </Label>
             <Input
-              className="mt-1 w-full rounded-md border border-[#d0d0e0] bg-[#f8f8f8] px-3 py-2 text-[#5b5b8c] placeholder:text-[#a0a0b0] focus:border-[#9090c0] focus:outline-none dark:border-[#606080] dark:bg-[#3c3c4f] dark:text-white dark:placeholder:text-[#808090]"
+              className="mt-1 w-full rounded-md border border-[#d0d0e0] bg-[#f8f8f8] px-3 py-2 text-[#5b5b8c] placeholder:text-[#a0a0b0] focus:border-[#9090c0] focus:outline-none "
               id="password-confirm"
               placeholder="비밀번호를 다시 입력하세요"
               required
@@ -152,11 +152,11 @@ export default function Component() {
             {!(confirmpassword === password) && <p className="mt-1 text-sm text-red-500">비밀번호가 일치하지 않습니다.</p>}
           </div>
           <div>
-            <Label className="text-[#5b5b8c] dark:text-white" htmlFor="name">
+            <Label className="text-[#5b5b8c]" htmlFor="name">
               이름
             </Label>
             <Input
-              className="mt-1 w-full rounded-md border border-[#d0d0e0] bg-[#f8f8f8] px-3 py-2 text-[#5b5b8c] placeholder:text-[#a0a0b0] focus:border-[#9090c0] focus:outline-none dark:border-[#606080] dark:bg-[#3c3c4f] dark:text-white dark:placeholder:text-[#808090]"
+              className="mt-1 w-full rounded-md border border-[#d0d0e0] bg-[#f8f8f8] px-3 py-2 text-[#5b5b8c] placeholder:text-[#a0a0b0] focus:border-[#9090c0] focus:outline-none "
               id="name"
               placeholder="이름을 입력하세요"
               required
@@ -167,11 +167,11 @@ export default function Component() {
             {!name && <p className="mt-1 text-sm text-red-500">이름을 입력해주세요.</p>}
           </div>
           <div>
-            <Label className="text-[#5b5b8c] dark:text-white" htmlFor="phone">
+            <Label className="text-[#5b5b8c]" htmlFor="phone">
               전화번호
             </Label>
             <Input
-              className="mt-1 w-full rounded-md border border-[#d0d0e0] bg-[#f8f8f8] px-3 py-2 text-[#5b5b8c] placeholder:text-[#a0a0b0] focus:border-[#9090c0] focus:outline-none dark:border-[#606080] dark:bg-[#3c3c4f] dark:text-white dark:placeholder:text-[#808090]"
+              className="mt-1 w-full rounded-md border border-[#d0d0e0] bg-[#f8f8f8] px-3 py-2 text-[#5b5b8c] placeholder:text-[#a0a0b0] focus:border-[#9090c0] focus:outline-none "
               id="phone"
               placeholder="전화번호를 입력하세요"
               required
@@ -183,7 +183,7 @@ export default function Component() {
           </div>
           <div className="space-y-2">
             <Button
-              className="w-full rounded-md bg-[#9090c0] py-2 font-medium text-white hover:bg-[#7070b0] focus:outline-none focus:ring-2 focus:ring-[#9090c0] focus:ring-offset-2 dark:bg-[#707090] dark:hover:bg-[#606080] dark:focus:ring-[#707090]"
+              className="w-full rounded-md bg-[#9090c0] py-2 font-medium text-white hover:bg-[#7070b0] focus:outline-none focus:ring-2 focus:ring-[#9090c0] focus:ring-offset-2"
               type="submit"
               disabled={!(username && password && confirmpassword && phone && name && (password === confirmpassword))}
               onClick={handleSubmit}
@@ -193,7 +193,7 @@ export default function Component() {
             </Button>
             <div className="flex items-center justify-between">
               <Link
-                className="text-[#9090c0] hover:text-[#7070b0] focus:outline-none focus:ring-2 focus:ring-[#9090c0] focus:ring-offset-2 dark:text-[#707090] dark:hover:text-[#606080] dark:focus:ring-[#707090]"
+                className="text-[#9090c0] hover:text-[#7070b0] focus:outline-none focus:ring-2 focus:ring-[#9090c0] focus:ring-offset-2"
                 variant="link"
                 as = {Link}
                 to = "/login"

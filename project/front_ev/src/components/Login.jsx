@@ -1,8 +1,3 @@
-/**
- * v0 by Vercel.
- * @see https://v0.dev/t/YKpDYCIPuot
- * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
- */
 
 import config from './config';
 import axios from 'axios';
@@ -57,8 +52,15 @@ export default function LoginComponent() {
       });
       if (response.data.message === 'Login successful.') {
         console.log('Login successful');
-        setAuthState({ username: username, isLoggedIn: true, token: response.data.user.token }); // 로그인 상태 업데이트
-        navigate('/home');  // 홈 화면으로 이동
+        setAuthState({ username: username, 
+                      isLoggedIn: true, 
+                      token: response.data.user.token, 
+                      is_staff: response.data.user.is_staff 
+        }); // 로그인 상태 업데이트
+        if(response.data.user.is_staff == true)
+          navigate('/ManageHome');  // 관리자 화면으로 이동
+        else        
+          navigate('/home');  // 홈 화면으로 이동
       } 
       else if (response.data.auth_error && response.data.auth_error[0]  === 'id pw error') {
         console.error('Login failed');
@@ -86,19 +88,19 @@ export default function LoginComponent() {
   };
   
   return (
-    <div className="flex h-screen w-full items-center justify-center bg-[#e0e0ff] dark:bg-[#2a2a3e]">
-      <div className="mx-4 w-full max-w-md space-y-6 rounded-lg bg-white p-6 shadow-lg dark:bg-[#3c3c4f]">
+    <div className="flex h-screen w-full items-center justify-center bg-[#e0e0ff] ">
+      <div className="mx-4 w-full max-w-md space-y-6 rounded-lg bg-white p-6 shadow-lg ">
         <form onSubmit={handleSubmit}>
         <div className="flex items-center justify-center">
-          <h1 className="text-3xl font-bold text-[#5b5b8c] dark:text-white">EV</h1>
+          <h1 className="text-3xl font-bold text-[#5b5b8c] ">EV</h1>
         </div>
         <div className="space-y-4">
           <div>
-            <Label className="text-[#5b5b8c] dark:text-white" htmlFor="username">
+            <Label className="text-[#5b5b8c]" htmlFor="username">
               아이디
             </Label>
             <Input
-              className="mt-1 w-full rounded-md border border-[#d0d0e0] bg-[#f8f8f8] px-3 py-2 text-[#5b5b8c] placeholder:text-[#a0a0b0] focus:border-[#9090c0] focus:outline-none dark:border-[#606080] dark:bg-[#3c3c4f] dark:text-white dark:placeholder:text-[#808090]"
+              className="mt-1 w-full rounded-md border border-[#d0d0e0] bg-[#f8f8f8] px-3 py-2 text-[#5b5b8c] placeholder:text-[#a0a0b0] focus:border-[#9090c0] focus:outline-none "
               id="username"
               placeholder="아이디를 입력해주세요."
               type="text"
@@ -107,11 +109,11 @@ export default function LoginComponent() {
             />
           </div>
           <div>
-            <Label className="text-[#5b5b8c] dark:text-white" htmlFor="password">
+            <Label className="text-[#5b5b8c]" htmlFor="password">
               비밀번호
             </Label>
             <Input
-              className="mt-1 w-full rounded-md border border-[#d0d0e0] bg-[#f8f8f8] px-3 py-2 text-[#5b5b8c] placeholder:text-[#a0a0b0] focus:border-[#9090c0] focus:outline-none dark:border-[#606080] dark:bg-[#3c3c4f] dark:text-white dark:placeholder:text-[#808090]"
+              className="mt-1 w-full rounded-md border border-[#d0d0e0] bg-[#f8f8f8] px-3 py-2 text-[#5b5b8c] placeholder:text-[#a0a0b0] focus:border-[#9090c0] focus:outline-none "
               id="password"
               placeholder="비밀번호를 입력해주세요"
               type="password"
@@ -121,7 +123,7 @@ export default function LoginComponent() {
           </div>
           <div className="space-y-2">
             <Button
-              className="w-full rounded-md bg-[#9090c0] py-2 font-medium text-white hover:bg-[#7070b0] focus:outline-none focus:ring-2 focus:ring-[#9090c0] focus:ring-offset-2 dark:bg-[#707090] dark:hover:bg-[#606080] dark:focus:ring-[#707090]"
+              className="w-full rounded-md bg-[#9090c0] py-2 font-medium text-white hover:bg-[#7070b0] focus:outline-none focus:ring-2 focus:ring-[#9090c0] focus:ring-offset-2"
               type="submit"
             >
               로그인
@@ -132,7 +134,7 @@ export default function LoginComponent() {
           <div>
             <div className="flex items-center justify-between">
               <Link
-                className="text-[#9090c0] hover:text-[#7070b0] focus:outline-none focus:ring-2 focus:ring-[#9090c0] focus:ring-offset-2 dark:text-[#707090] dark:hover:text-[#606080] dark:focus:ring-[#707090]"
+                className="text-[#9090c0] hover:text-[#7070b0] focus:outline-none focus:ring-2 focus:ring-[#9090c0] focus:ring-offset-2"
                 variant="link"
                 as = {Link}
                 to = "/signup"
@@ -142,7 +144,7 @@ export default function LoginComponent() {
             </div>
           </div>
           {errorMessage && (
-          <div className="rounded-md bg-[#e0e0ff] p-4 text-[#5b5b8c] dark:bg-[#3c3c4f] dark:text-white">
+          <div className="rounded-md bg-[#e0e0ff] p-4 text-[#5b5b8c]">
             <p>{errorMessage}</p>
           </div>
           )}

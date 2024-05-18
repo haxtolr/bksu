@@ -11,29 +11,45 @@ const LogoutComponent = () => {
   const { authState, setAuthState } = useAuth();
   const [, setErrorMessage] = useState('');
 
-  axios.defaults.baseURL = config.baseURL;;
+  axios.defaults.baseURL = config.baseURL;
+  let cancel;
+  
+const handleLogout = async () => {
+  // 진행 중인 요청이 있다면 취소합니다.
+  if (cancel !== undefined) {
+    cancel();
+  }
 
-  const handleLogout = async () => {
   console.log(authState);
 
-    if (authState.isLoggedIn) {
+  if (authState.isLoggedIn) {
     try {
+      // 새로운 CancelToken을 생성하고, 이를 cancel 변수에 할당합니다.
+      const { token: cancelToken, cancel: c } = axios.CancelToken.source();
+      cancel = c;
+
       await axios.post('/accounts/logout/', null, {
+        cancelToken,  // 요청에 CancelToken을 추가합니다.
         withCredentials: true,
         headers: {
           Authorization: `Token ${authState.token}`
         }
       });
+
       setAuthState({ username: "", isLoggedIn: false, token: "" }); // 로그아웃 상태 업데이트
       navigate('/login');  // 로그인 화면으로 이동
     } catch (error) {
-      console.error('로그아웃 에러:', error);
+      if (axios.isCancel(error)) {
+        console.log('Request canceled', error.message);
+      } else {
+        console.error('로그아웃 에러:', error);
+      }
     }
-  }else {
+  } else {
     console.error('Login failed');
     setErrorMessage('이미 로그인 중입니다.');
   }
-  };
+};
 
   return (
   <Button
