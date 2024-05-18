@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect
 from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework.status import HTTP_200_OK, HTTP_400_BAD_REQUEST
-from .serializers import UserLoginSerializer, UserSignupSerailizer
+from .serializers import UserLoginSerializer, UserSignupSerailizer, MyInfoSerializer
 from rest_framework.permissions import AllowAny
 from rest_framework.authtoken.models import Token
 
@@ -33,7 +33,8 @@ class UserLoginView(generics.GenericAPIView): # 로그인
             "user": {
                 "id": user.id,
                 "username": user.username,
-                "token": token.key
+                "token": token.key,
+                "is_staff" : user.is_staff
             }
         }
         return Response(response_data, status=HTTP_200_OK)
@@ -77,39 +78,14 @@ class UserSignupView(generics.GenericAPIView): # 회원가입
         return Response(response_data, status=HTTP_200_OK)
 
 
-
-#def signup(request):
-#    if request.method == 'POST':
-#        form = SignUpForm(request.POST)
-#        if form.is_valid():
-#            form.save()
-#            return redirect('/main/')
-#        else:
-#            print(form.errors)
-#    else:
-#        form = SignUpForm()
-#    return render(request, 'signup.html')
-
-#@csrf_exempt
-#def login(request):
-#    if request.method == 'POST':
-#        form = loginForm(request.POST)
-#        if form.is_valid():
-#            username = form.cleaned_data['username']
-#            password = form.cleaned_data['password']
-#            user = authenticate(username=username, password=password)
-#            if user is not None:
-#                if user.is_approved:
-#                    auth.login(request, user)
-#                    print('로그인 성공')
-#                    return JsonResponse({'status': 'success'})
-#                else:
-#                    print('승인 대기 중')
-#                    return JsonResponse({'status': 'error', 'message': '승인 대기 중입니다.'})
-#            else:
-#                print('로그인 실패')
-#                return JsonResponse({'status': 'error', 'message': '잘못된 아이디, 비밀번호 입니다.'})
-#    return JsonResponse({'status': 'error', 'message': 'Invalid method'})
+class MyInfoView(APIView):
+    def get(self, request, username, format=None):
+        user = get_user_model().objects.filter(username=username).first()
+        if user:
+            serializer = MyInfoSerializer(user)
+            return Response(serializer.data)
+        else:
+            return Response({"message": "User not found."}, status=status.HTTP_404_NOT_FOUND)
 
 def logout(request):
     auth.logout(request)

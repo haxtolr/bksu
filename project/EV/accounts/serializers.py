@@ -76,3 +76,8 @@ class UserLogoutSerializer(serializers.Serializer):
     def logout(self, request):
         logout(request)
         return request.user
+    
+class MyInfoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = get_user_model()
+        fields = ['username', 'name', 'phone', 'rank', 'day_time', 'week_time', 'login_time']

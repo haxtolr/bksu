@@ -11,6 +11,11 @@ import './styles/login.css';
 import LogoutComponent from './components/Logout.jsx';
 import AuthMiddleware from './components/AuthMiddleware.js';
 import Check_order from './check_order/Check_order.jsx';
+import ManageHome from './ad/ManageHome.jsx';
+import AdNavi from './components/AdNavi.jsx';
+import ManagePeople from './ad/ManagePeople.jsx';
+import ManageProduct from './ad/ManageProduct.jsx';
+import ManageOrder from './ad/ManageOrder.jsx';
 
 
 function Footer() {
@@ -27,7 +32,7 @@ function Footer() {
   }, []);
 
   return (
-     <div className="bg-[#5C3C92] dark:bg-[#341c4e] text-white p-4 text-center">
+     <div className="bg-[#5C3C92] text-white p-4 text-center">
    <p className="mb-2">현재 시간: {time.toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' })}</p>
    <p>연락처: 010-1234-5678</p>
   </div>
@@ -53,7 +58,8 @@ function Main() {
   
   return (
     <>
-      {location.pathname !== '/login' && location.pathname !== '/signup' && <Navi />}
+       {['/ManageHome', '/ManagePeople', '/ManageOrder', '/ManageProduct'].includes(location.pathname) ? <AdNavi /> :
+        ['/login', '/signup'].includes(location.pathname) ? null : <Navi />}
       <Routes>
         <Route path="/signup" element={<Signup/>} />
         <Route path="/login" element={<LoginComponent/>} />
@@ -77,10 +83,33 @@ function Main() {
           <AuthMiddleware>
           <Myinfo cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} />
          </AuthMiddleware>
+        } />
+        <Route path="/ManageHome" element={
+          <AuthMiddleware>
+           <ManageHome />
+          </AuthMiddleware>
+        } />  
+
+        <Route path="/ManagePeople" element={
+          <AuthMiddleware>
+           <ManagePeople />
+          </AuthMiddleware>
+        } />  
+
+        <Route path="/ManageProduct" element={
+          <AuthMiddleware>
+           <ManageProduct />
+          </AuthMiddleware>
+        } />  
+
+         <Route path="/ManageOrder" element={
+          <AuthMiddleware>
+           <ManageOrder />
+          </AuthMiddleware>
         } />  
         
   </Routes>
-  <div className="bg-[#e0e0ff] dark:bg-[#2a2a3e]">
+  <div className="bg-[#e0e0ff] dark:bg-[#e0e0ff]">
   <Footer />
   </div>
     </>
@@ -90,7 +119,7 @@ function Main() {
 function App() {
   return (
     <Router>
-     <div className="bg-[#e0e0ff] dark:bg-[#2a2a3e]">
+     <div className="bg-[#e0e0ff] dark:bg-[#e0e0ff]">
       <Main />
      </div>
     </Router>

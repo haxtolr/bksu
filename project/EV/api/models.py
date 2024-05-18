@@ -17,6 +17,7 @@ class Agv(models.Model):
     battery = models.IntegerField()
     order = models.ForeignKey('Order', on_delete=models.SET_NULL, null=True, blank=True)
     last_update = models.DateTimeField(auto_now=True)
+    agv_camera = models.CharField(max_length=255, blank=True, null=True)
 
 class Order(models.Model):
     order_number = models.CharField(max_length=255)
@@ -39,6 +40,7 @@ class Arm(models.Model):
     rack_number = models.IntegerField()  # 부착된 렉 번호
     order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True, blank=True)  # 작업 중인 주문 번호
 
+
 class Rack(models.Model):
     STATUS_CHOICES = [
         ('OP', 'Operating'),  # 작동 중
@@ -49,6 +51,7 @@ class Rack(models.Model):
     products = models.ManyToManyField(Product, blank=True)  # 렉에 있는 상품들
     status = models.CharField(max_length=2, choices=STATUS_CHOICES, default='RD')  # 렉의 상태
     is_operable = models.BooleanField(default=True)  # 작동 가능 상태
+    rack_camera = models.CharField(max_length=255, blank=True, null=True)
 
 
 class RequestResponse(models.Model):

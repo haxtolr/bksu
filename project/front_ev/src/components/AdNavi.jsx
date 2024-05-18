@@ -7,7 +7,7 @@ import { useAuth } from './AuthProvider.js';
 import LogoutComponent from './Logout';
 
 
-export default function Navi() {
+export default function AdNavi() {
   const { authState, } = useAuth(); // AuthProvider에서 제공하는 상태와 함수를 가져옵니다.
   const [weeklyTime, setWeeklyTime] = useState(0);
   const [dailyTime, setDailyTime] = useState(0);
@@ -41,48 +41,48 @@ export default function Navi() {
       <header className="flex h-16 w-full items-center justify-between bg-white px-4 shadow-md md:px-6" >
         <div className="flex items-center">
           <Link className="flex items-center" href="#">
-            <MountainIcon className="h-6 w-6 text-[#5b5b8c] " />
+            <MountainIcon className="h-6 w-6 text-[#5b5b8c]" />
             <span className="ml-2 text-xl font-bold text-[#5b5b8c]">EV</span>
           </Link>
         </div>
         <nav className="hidden items-center space-x-6 md:flex">       
           <Link
             className="text-[#5b5b8c] hover:text-[#7070b0] focus:outline-none focus:ring-2 focus:ring-[#9090c0] focus:ring-offset-2 text-lg"
-            to ="/home"
+            to ="/ManageHome"
           >
             Home
           </Link>
           <Link
             className="text-[#5b5b8c] hover:text-[#7070b0] focus:outline-none focus:ring-2 focus:ring-[#9090c0] focus:ring-offset-2 text-lg"
-            to="/check_order"
+            to="/ManagePeople"
           >
-            주문 
+            인사 관리 
           </Link>
           <Link
             className="text-[#5b5b8c] hover:text-[#7070b0] focus:outline-none focus:ring-2 focus:ring-[#9090c0] focus:ring-offset-2 text-lg"
-            to="/orderwhere"
+            to="/ManageProduct"
           >
-            배송 현황
+            제품 관리
           </Link>
           <Link
             className="text-[#5b5b8c] hover:text-[#7070b0] focus:outline-none focus:ring-2 focus:ring-[#9090c0] focus:ring-offset-2 text-lg"
-             to ="/myinfo"
+             to ="/ManageOrder"
           >
-            내 정보
+            주문 관리
           </Link>
         </nav>
         <Sheet>
           <SheetTrigger asChild>
             <Button className="md:hidden" size="icon" variant="outline">
-              <MenuIcon className="h-6 w-6 text-[#5b5b8c] dark:text-white" />
-              <span className="sr-only">Toggle navigation menu</span>
+              <MenuIcon className="h-6 w-6 text-[#5b5b8c]" />
+              <span className="sr-only">아직 테스트중</span>
             </Button>
           </SheetTrigger>
           <SheetContent side="left">
             <div className="flex flex-col items-start space-y-6 p-6">
               <Link className="flex items-center" href="#">
-                <MountainIcon className="h-6 w-6 text-[#5b5b8c] dark:text-white" />
-                <span className="ml-2 text-xl font-bold text-[#5b5b8c] dark:text-white">Acme Inc</span>
+                <MountainIcon className="h-6 w-6 text-[#5b5b8c]" />
+                <span className="ml-2 text-xl font-bold text-[#5b5b8c]">관리자 페이지</span>
               </Link>
               <nav className="flex flex-col items-start space-y-4">
                 <Link
