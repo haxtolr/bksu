@@ -81,3 +81,8 @@ class MyInfoSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
         fields = ['username', 'name', 'phone', 'rank', 'day_time', 'week_time', 'login_time']
+
+class UserDetailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = get_user_model()
+        fields = '__all__'

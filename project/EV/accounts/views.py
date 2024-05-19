@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect
 from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework.status import HTTP_200_OK, HTTP_400_BAD_REQUEST
-from .serializers import UserLoginSerializer, UserSignupSerailizer, MyInfoSerializer
+from .serializers import UserLoginSerializer, UserSignupSerailizer, MyInfoSerializer, UserDetailSerializer
 from rest_framework.permissions import AllowAny
 from rest_framework.authtoken.models import Token
 
@@ -86,6 +86,31 @@ class MyInfoView(APIView):
             return Response(serializer.data)
         else:
             return Response({"message": "User not found."}, status=status.HTTP_404_NOT_FOUND)
+
+class UserListView(APIView):
+    def get(self, request, format=None):
+        if request.user.is_staff:
+            users = get_user_model().objects.all()
+            serializer = UserDetailSerializer(users, many=True)
+            return Response(serializer.data)
+        else:
+            return Response({"message": "Permission denied."}, status=status.HTTP_403_FORBIDDEN)
+
+class UserUpdateView(APIView):
+    def patch(self, request, pk, format=None):
+        if request.user.is_staff:
+            try:
+                user = get_user_model().objects.get(pk=pk)
+            except get_user_model().DoesNotExist:
+                return Response({"message": "User not found."}, status=status.HTTP_404_NOT_FOUND)
+            
+            serializer = UserDetailSerializer(user, data=request.data, partial=True)  # partial=True로 설정하여 부분 업데이트를 가능하게 함
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        else:
+            return Response({"message": "Permission denied."}, status=status.HTTP_403_FORBIDDEN)
 
 def logout(request):
     auth.logout(request)
