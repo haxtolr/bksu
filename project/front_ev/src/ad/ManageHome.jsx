@@ -134,7 +134,7 @@ const ManageHome = () => {
                         </div>
                       )}
                       <div style={{ flex: 1 }}>
-                        <iframe title="AGV Video" src="http://172.30.1.73:8080/?action=stream" width="640" height="320" style={{ border: '2px solid black', borderRadius: '10px' }}></iframe>
+                        <iframe title="AGV Video" src="http://172.30.1.5:8080/?action=stream" width="640" height="320" style={{ border: '2px solid black', borderRadius: '10px' }}></iframe>
                       </div>
                     </Box>
                   </Modal>

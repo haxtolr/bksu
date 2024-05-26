@@ -112,16 +112,20 @@ function Myinfo() {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {orders.map((orders, index) => (
-                                                <tr key={orders.id || index}>
-                                                    <td className="px-5 py-5 border-b border-gray-200 bg-white text-lg">{orders.order_number}</td>
-                                                    <td className="px-5 py-5 border-b border-gray-200 bg-white text-lg">{orders.products}</td>
-                                                    <td className="px-5 py-5 border-b border-gray-200 bg-white text-lg">{orders.destination}</td>
-                                                    <td className="px-5 py-5 border-b border-gray-200 bg-white text-lg">{orders.agv_id}</td>
-                                                    <td className="px-5 py-5 border-b border-gray-200 bg-white text-lg">{orders.order_accepted ? '배송 성공' : '배송 실패'}</td>
-                                                    <td className="px-5 py-5 border-b border-gray-200 bg-white text-lg">{orders.order_time ? orders.order_time : '정보 없음'}</td>
-                                                </tr>
-                                            ))}
+                                        {orders.map((order, index) => (
+                                            <tr key={order.id || index}>
+                                                <td className="px-5 py-5 border-b border-gray-200 bg-white text-lg">{order.order_number}</td>
+                                                <td className="px-5 py-5 border-b border-gray-200 bg-white text-lg">
+                                                    {order.products.map((product, productIndex) => (
+                                                        <p key={productIndex}>{product.name} {product.quantity}개</p>
+                                                    ))}
+                                                </td>
+                                                <td className="px-5 py-5 border-b border-gray-200 bg-white text-lg">{order.destination}</td>
+                                                <td className="px-5 py-5 border-b border-gray-200 bg-white text-lg">{order.agv_id}</td>
+                                                <td className="px-5 py-5 border-b border-gray-200 bg-white text-lg">{order.order_accepted ? '배송 성공' : '배송 실패'}</td>
+                                                <td className="px-5 py-5 border-b border-gray-200 bg-white text-lg">{order.order_time ? order.order_time : '정보 없음'}</td>
+                                            </tr>
+                                        ))}
                                         </tbody>
                                     </table>
                         </div>

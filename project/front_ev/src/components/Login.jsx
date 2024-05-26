@@ -57,7 +57,7 @@ export default function LoginComponent() {
                       token: response.data.user.token, 
                       is_staff: response.data.user.is_staff 
         }); // 로그인 상태 업데이트
-        if(response.data.user.is_staff == true)
+        if(response.data.user.is_staff === true)
           navigate('/ManageHome');  // 관리자 화면으로 이동
         else        
           navigate('/home');  // 홈 화면으로 이동
@@ -100,7 +100,7 @@ export default function LoginComponent() {
               아이디
             </Label>
             <Input
-              className="mt-1 w-full rounded-md border border-[#d0d0e0] bg-[#f8f8f8] px-3 py-2 text-[#5b5b8c] placeholder:text-[#a0a0b0] focus:border-[#9090c0] focus:outline-none "
+              className="mt-1 w-full rounded-md border border-[#d0d0e0] bg-[#f8f8f8] px-3 py-2 text-[#f3eeee] placeholder:text-[#a0a0b0] focus:border-[#9090c0] focus:outline-none "
               id="username"
               placeholder="아이디를 입력해주세요."
               type="text"
@@ -113,7 +113,7 @@ export default function LoginComponent() {
               비밀번호
             </Label>
             <Input
-              className="mt-1 w-full rounded-md border border-[#d0d0e0] bg-[#f8f8f8] px-3 py-2 text-[#5b5b8c] placeholder:text-[#a0a0b0] focus:border-[#9090c0] focus:outline-none "
+              className="mt-1 w-full rounded-md border border-[#d0d0e0] bg-[#f8f8f8] px-3 py-2 text-[#f3eeee] placeholder:text-[#a0a0b0] focus:border-[#9090c0] focus:outline-none "
               id="password"
               placeholder="비밀번호를 입력해주세요"
               type="password"

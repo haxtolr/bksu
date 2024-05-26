@@ -1,17 +1,32 @@
-
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
 body {
   font-family: var(--font-cormorant_garamond), serif;
-  background-color: #e0e0ff; /* Light mode background color */
+  background-color: #e0e0ff; /* 라이트 모드 배경 색상 */
 }
 
 body.dark-mode {
-  background-color: #e0e0ff; /* Dark mode background color */
+  background-color: #e0e0ff; /* 다크 모드 배경 색상 */
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-arimo), sans-serif;
+}
+
+/* placeholder 텍스트 색상 변경 */
+::placeholder {
+  color: #f3eeee; /* 밝은 회색 */
+  opacity: 1; /* placeholder 텍스트 완전히 불투명하게 */
+}
+
+/* 모든 input 요소의 placeholder 스타일 적용 */
+input::placeholder {
+  color: #eeeaea; /* 밝은 회색 */
+}
+
+/* 특정 클래스에 placeholder 스타일 적용 */
+.custom-placeholder::placeholder {
+  color: #f6e7e7; /* 밝은 회색 */
 }

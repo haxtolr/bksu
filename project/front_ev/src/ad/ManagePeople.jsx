@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../components/AuthProvider.js';
-import { Table, TableHead, TableRow, TableCell, TableBody, TableSortLabel, TextField } from '@mui/material';
+import { Table, TableHead, TableRow, TableCell, TableBody, TableSortLabel, TextField, Card, CardHeader, CardContent, Collapse, IconButton, Box, Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 import Switch from '@mui/material/Switch';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
+import ExpandMore from '@mui/icons-material/ExpandMore';
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import config from '../components/config.js';
 import "../styles/mpeople.css";
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 
 function ManagePeople() {
   const { authState } = useAuth();
@@ -15,6 +16,8 @@ function ManagePeople() {
   const [sortConfig, setSortConfig] = useState({ key: null, direction: 'asc' });
   const [editedUsers, setEditedUsers] = useState({});
   const [isModified, setIsModified] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [isTableVisible, setIsTableVisible] = useState(true);
 
   useEffect(() => {
     fetch(`${config.baseURL}accounts/user_list/`, {
@@ -61,10 +64,9 @@ function ManagePeople() {
   const handleSave = () => {
     Object.keys(editedUsers).forEach(id => {
       const updates = editedUsers[id];
-      
-      console.log(updates);
+
       fetch(`${config.baseURL}accounts/user-update/${id}/`, {
-        method: 'PATCH', // Use PATCH for partial updates
+        method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Token ${authState.token}`
@@ -72,14 +74,14 @@ function ManagePeople() {
         body: JSON.stringify(updates)
       })
       .then(response => {
-        if (!response.ok) {return response.json().then(error => {
-          throw new Error('Network response was not ok.');
-        });
-      }
+        if (!response.ok) {
+          return response.json().then(error => {
+            throw new Error('Network response was not ok.');
+          });
+        }
         return response.json();
       })
       .then(data => {
-        // Update the local state to reflect the changes
         setUsers(prevUsers => prevUsers.map(user => user.id === data.id ? data : user));
         setIsModified(false);
         setEditedUsers({});
@@ -114,11 +116,30 @@ function ManagePeople() {
     return sortableUsers;
   }, [users, sortConfig]);
 
+  const filteredUsers = sortedUsers.filter(user => {
+    const searchValue = searchQuery.toLowerCase();
+    return (
+      user.id.toString().includes(searchValue) ||
+      user.name.toLowerCase().includes(searchValue) ||
+      user.rank.toLowerCase().includes(searchValue) ||
+      user.phone.toLowerCase().includes(searchValue) ||
+      user.username.toLowerCase().includes(searchValue)
+    );
+  });
+
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-4xl font-bold">인적 사항 관리</h1>
-        <div className="flex items-center space-x-4">
+    <Box sx={{ maxWidth: '100%', mx: 'auto', py: 4, px: 2 }}>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
+        <Typography variant="h4" component="h1" fontWeight="bold">
+          인적 사항 관리
+        </Typography>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+          <TextField
+            label="검색"
+            variant="outlined"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
           <Button
             style={{
               backgroundColor: isModified ? 'green' : 'plum',
@@ -131,81 +152,84 @@ function ManagePeople() {
           >
             수정 완료
           </Button>
-        </div>
-      </div>
-      <div className="overflow-x-auto" style={{ backgroundColor: 'white', borderRadius: '10px' }}>
-        <Table>
-          <TableHead className="bg-gray-100">
-            <TableRow>
-              {['id', 'name', 'rank', 'phone', 'username', 'week_time', 'day_time', 'login_time', ,'TEST','is_active', 'is_staff', 'is_approved'].map((key, index) => (
-                <TableCell key={index}>
-                  {['is_active', 'is_staff', 'is_approved'].includes(key) ? (
-                    <TableSortLabel
-                      IconComponent={props => <ArrowDropDownIcon {...props} style={{ fontSize: '1rem' }} />}
-                      active={sortConfig.key === key}
-                      direction={sortConfig.direction}
-                      onClick={() => handleSort(key)}
-                    >
-                      {key}
-                    </TableSortLabel>
-                  ) : (
-                    <TableSortLabel
-                      IconComponent={props => <ArrowDropDownIcon {...props} style={{ fontSize: '1rem' }} />}
-                      active={sortConfig.key === key}
-                      direction={sortConfig.direction}
-                      onClick={() => handleSort(key)}
-                    >
-                      {key}
-                    </TableSortLabel>
-                  )}
-                </TableCell>
-              ))}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {sortedUsers.map((user, index) => (
-              <TableRow key={index}>
-                <TableCell>{user.id}</TableCell>
-                <TableCell>{user.name}</TableCell>
-                <TableCell onDoubleClick={() => handleEdit(user.id, 'rank', prompt('Enter new rank:', user.rank))}>
-                  {editedUsers[user.id] && editedUsers[user.id].rank ? editedUsers[user.id].rank : user.rank}
-                </TableCell>
-                <TableCell onDoubleClick={() => handleEdit(user.id, 'phone', prompt('Enter new phone number:', user.phone))}>
-                  {editedUsers[user.id] && editedUsers[user.id].phone ? editedUsers[user.id].phone : user.phone}
-                </TableCell>
-                <TableCell>{user.username}</TableCell>
-                <TableCell>{new Date(user.week_time).toLocaleTimeString()}</TableCell>
-                <TableCell>{new Date(user.day_time).toLocaleTimeString()}</TableCell>
-                <TableCell>{new Date(user.login_time).toLocaleTimeString()}</TableCell>
-                <TableCell>버튼 넣기</TableCell>
-                <TableCell>
-                  {user.is_active ? (
-                    <CheckCircleIcon style={{ color: 'green' }} />
-                  ) : (
-                    <CancelIcon style={{ color: 'red' }} />
-                  )}
-                </TableCell>
-                <TableCell>
-                  <Switch
-                    checked={editedUsers[user.id] && editedUsers[user.id].is_staff !== undefined ? editedUsers[user.id].is_staff : user.is_staff}
-                    onChange={handleSwitchChange(user.id, 'is_staff')}
-                  />
-                </TableCell>
-                <TableCell>
-                  <Button
-                    variant="contained"
-                    color={editedUsers[user.id] && editedUsers[user.id].is_approved ? "primary" : "secondary"}
-                    onClick={() => handleEdit(user.id, 'is_approved', !(user.is_approved))}
-                  >
-                    {user.is_approved ? '승인' : '미승인'}
-                  </Button>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </div>
-    </div>
+        </Box>
+      </Box>
+      <Card>
+          <CardHeader
+            title="All Users"
+            sx={{ bgcolor: 'background.default' }}
+            action={
+              <IconButton onClick={() => setIsTableVisible(prev => !prev)}>
+                <ExpandMore />
+              </IconButton>
+            }
+          />
+        <Collapse in={isTableVisible}>
+          
+          <CardContent>
+            <Table>
+              <TableHead className="bg-gray-200">
+                <TableRow>
+                  {['사번', '이름', '직급', '전화번호', 'ID', '주간', '일간', '최근 로그인시간', 'TEST', '접속중', '관리자 권한', '가입 승인'].map((key, index) => (
+                    <TableCell key={index} style={{ whiteSpace: 'nowrap' }}>
+                      <TableSortLabel
+                        IconComponent={props => <ArrowDropDownIcon {...props} style={{ fontSize: '1rem' }} />}
+                        active={sortConfig.key === key}
+                        direction={sortConfig.direction}
+                        onClick={() => handleSort(key)}
+                      >
+                        {key}
+                      </TableSortLabel>
+                    </TableCell>
+                  ))}
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {filteredUsers.map((user, index) => (
+                  <TableRow key={index}>
+                    <TableCell>{user.id}</TableCell>
+                    <TableCell>{user.name}</TableCell>
+                    <TableCell onDoubleClick={() => handleEdit(user.id, 'rank', prompt('Enter new rank:', user.rank))}>
+                      {editedUsers[user.id] && editedUsers[user.id].rank ? editedUsers[user.id].rank : user.rank}
+                    </TableCell>
+                    <TableCell onDoubleClick={() => handleEdit(user.id, 'phone', prompt('Enter new phone number:', user.phone))}>
+                      {editedUsers[user.id] && editedUsers[user.id].phone ? editedUsers[user.id].phone : user.phone}
+                    </TableCell>
+                    <TableCell>{user.username}</TableCell>
+                    <TableCell>{new Date(user.week_time).toLocaleTimeString()}</TableCell>
+                    <TableCell>{new Date(user.day_time).toLocaleTimeString()}</TableCell>
+                    <TableCell>{new Date(user.login_time).toLocaleTimeString()}</TableCell>
+                    <TableCell>버튼 넣기</TableCell>
+                    <TableCell>
+                      {user.is_active ? (
+                        <CheckCircleIcon style={{ color: 'green' }} />
+                      ) : (
+                        <CancelIcon style={{ color: 'red' }} />
+                      )}
+                    </TableCell>
+                    <TableCell>
+                      <Switch
+                        checked={editedUsers[user.id] && editedUsers[user.id].is_staff !== undefined ? editedUsers[user.id].is_staff : user.is_staff}
+                        onChange={handleSwitchChange(user.id, 'is_staff')}
+                      />
+                    </TableCell>
+                    <TableCell>
+                      <Button
+                        variant="contained"
+                        color={editedUsers[user.id] && editedUsers[user.id].is_approved ? "primary" : "secondary"}
+                        onClick={() => handleEdit(user.id, 'is_approved', !(user.is_approved))}
+                      >
+                        {user.is_approved ? '승인' : '미승인'}
+                      </Button>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </CardContent>
+        </Collapse>
+      </Card>
+    </Box>
   );
 }
 

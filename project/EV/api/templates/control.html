@@ -1,0 +1,33 @@
+<!-- templates/control.html -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>피코 컨트롤</title>
+</head>
+<body>
+    <h1>피코 제어</h1>
+    <form method="post" id="controlForm">
+        {% csrf_token %}
+        <button type="button" onclick="sendValue(1)">1</button>
+        <button type="button" onclick="sendValue(2)">2</button>
+        <button type="button" onclick="sendValue(3)">3</button>
+        <input type="hidden" name="value" id="valueInput">
+    </form>
+
+    <div id="responseMessage">
+        {% if message %}
+            <p>{{ message }}</p>
+        {% elif error_message %}
+            <p>{{ error_message }}</p>
+        {% endif %}
+    </div>
+
+    <script>
+        function sendValue(value) {
+            document.getElementById('valueInput').value = value;
+            document.getElementById('controlForm').submit();
+        }
+    </script>
+</body>
+</html>
