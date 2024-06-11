@@ -22,13 +22,17 @@ from main.views import main
 
 from main import views
 
+
+
 urlpatterns = [
+    path('control/', include('control.urls')),##
     path('admin/', admin.site.urls),
     path('main/', views.main, name='main'),
     path('/', include('main.urls')),
     path('accounts/', include('accounts.urls')),
     path('products/', include('products.urls')),
     path('api/', include('api.urls')),
+    
 ] 
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

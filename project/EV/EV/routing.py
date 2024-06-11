@@ -1,0 +1,9 @@
+from channels.routing import ProtocolTypeRouter, URLRouter
+import control.routing
+
+application = ProtocolTypeRouter({
+    # (http->django views is added by default)
+    'websocket': URLRouter(
+        control.routing.websocket_urlpatterns
+    )
+})

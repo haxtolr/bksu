@@ -1,10 +1,9 @@
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.utils import timezone
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
 
-class UserManager(BaseUserManager):
+class UserManager(models.Manager):
     def create_user(self, username, password=None, **extra_fields):
         if not username:
             raise ValueError('The Username field must be set')
@@ -27,6 +26,7 @@ class UserManager(BaseUserManager):
         return self.create_user(username, password, **extra_fields)
 
 
+from django.contrib.auth.models import AbstractBaseUser
 
 class User(AbstractBaseUser):
     id = models.AutoField(primary_key=True)
@@ -36,8 +36,8 @@ class User(AbstractBaseUser):
     rank = models.CharField(max_length=50, default='사원')
     login_time = models.DateTimeField(auto_now=True)
     logout_time = models.DateTimeField(null=True, blank=True)
-    day_time = models.DateTimeField(null=True, blank=True)
-    week_time = models.DateTimeField(null=True, blank=True)
+    day_time = models.IntegerField(default=0)
+    week_time = models.IntegerField(default=0)
     is_approved = models.BooleanField(default=False)
     is_active = models.BooleanField(default=False)
     is_admin = models.BooleanField(default=False)
@@ -56,8 +56,8 @@ class User(AbstractBaseUser):
     def logout(self):
         if self.login_time:
             duration = timezone.now() - self.login_time
-            self.day_time = duration if self.day_time is None else self.day_time + duration
-            self.week_time = duration if self.week_time is None else self.week_time + duration
+            #self.day_time = duration if self.day_time is None else self.day_time + duration
+            #self.week_time = duration if self.week_time is None else self.week_time + duration
             self.logout_time = timezone.now()
             self.save()
 
@@ -74,9 +74,9 @@ class User(AbstractBaseUser):
 @receiver(pre_save, sender=User)
 def reset_week_time(sender, instance, **kwargs):
     if timezone.now().weekday() == 0 and timezone.now().hour == 0:
-        instance.week_time = timezone.now()
+        instance.week_time = 0
 
 @receiver(pre_save, sender=User)
-def reset_day_time(sender, instance, **kwargs):
+def reset_day_time(sender, instance, **kwargs): #
     if timezone.now().hour == 0:
-        instance.day_time = timezone.now()
+        instance.day_time = 0

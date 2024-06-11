@@ -20,18 +20,24 @@ function ManagePeople() {
   const [isTableVisible, setIsTableVisible] = useState(true);
 
   useEffect(() => {
-    fetch(`${config.baseURL}accounts/user_list/`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Token ${authState.token}`
-      },
-    })
-    .then(response => response.json())
-    .then(data => setUsers(data))
-    .catch((error) => {
-      console.error('Error:', error);
-    });
+    const fetchData = () => {
+      fetch(`${config.baseURL}accounts/user_list/`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Token ${authState.token}`
+        },
+      })
+      .then(response => response.json())
+      .then(data => setUsers(data))
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+    };
+    fetchData(); // Initial fetch
+    const intervalId = setInterval(fetchData, 3000); // Fetch every 3 seconds
+
+    return () => clearInterval(intervalId); // Cleanup interval on unmount
   }, [authState.token]);
 
   const handleSort = (key) => {
@@ -196,8 +202,8 @@ function ManagePeople() {
                       {editedUsers[user.id] && editedUsers[user.id].phone ? editedUsers[user.id].phone : user.phone}
                     </TableCell>
                     <TableCell>{user.username}</TableCell>
-                    <TableCell>{new Date(user.week_time).toLocaleTimeString()}</TableCell>
-                    <TableCell>{new Date(user.day_time).toLocaleTimeString()}</TableCell>
+                    <TableCell>{Math.floor(user.week_time / 60)}시간 {user.week_time%60}분</TableCell>
+                    <TableCell>{Math.floor(user.day_time / 60)}시간 {user.day_time%60}분</TableCell>
                     <TableCell>{new Date(user.login_time).toLocaleTimeString()}</TableCell>
                     <TableCell>버튼 넣기</TableCell>
                     <TableCell>

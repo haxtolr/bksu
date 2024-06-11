@@ -16,6 +16,7 @@ import {
   Box,
   TableSortLabel,
   Modal,
+  TextField,
 } from '@mui/material';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import { ExpandMore } from '@mui/icons-material';
@@ -35,12 +36,23 @@ function ManageProduct({ authToken }) {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [imageModalOpen, setImageModalOpen] = useState(false);
   const [detailModalOpen, setDetailModalOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
 
+  // 검색어를 업데이트
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+  
+  // 제품을 필터링
+  const filteredProducts = products.filter((product) =>
+    product.product_name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+  
   const handleToggle = () => {
     setOpen(!open);
   };
 
-  useEffect(() => {
+  const fetchProducts = () => {
     fetch(`${config.baseURL}products/`, {
       headers: {
         'Authorization': `Token ${authState.token}`
@@ -71,7 +83,15 @@ function ManageProduct({ authToken }) {
       .catch(error => {
         console.error('Error:', error);
       });
+  };
+
+  useEffect(() => {
+    fetchProducts();
+    const intervalId = setInterval(fetchProducts, 3000); // fetch data every 5 seconds
+
+    return () => clearInterval(intervalId); // clean up interval on component unmount
   }, [authState.token]);
+
 
   const handleRequestSort = (property) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -109,11 +129,20 @@ function ManageProduct({ authToken }) {
     <Box sx={{ maxWidth: '1200px', mx: 'auto', py: 4 }}>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
         <Typography variant="h4" component="h1" fontWeight="bold">
-          제품 관리
+         제품 관리
         </Typography>
-        <AddProductButton />
+         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+           <TextField
+              label="제품 검색"
+              variant="outlined"
+              value={searchTerm}
+              onChange={handleSearchChange}
+              fullWidth
+            />
+      <AddProductButton />
       </Box>
-      <Card>
+    </Box>
+    <Card>
         <CardHeader
           title="All Products"
           action={
@@ -183,7 +212,7 @@ function ManageProduct({ authToken }) {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {sortedProducts.map((product) => (
+                {filteredProducts.map((product) => (
                   <TableRow key={product.id}>
                     <TableCell>{product.product_name}</TableCell>
                     <TableCell>{product.preview1}</TableCell>
@@ -254,7 +283,7 @@ function ManageProduct({ authToken }) {
         </Box>
       </Modal>
     </Box>
-  );
+);
 }
 
 function BarChart(props) {

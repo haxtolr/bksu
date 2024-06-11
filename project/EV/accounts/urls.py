@@ -2,8 +2,7 @@
 from django.urls import path
 from . import views
 from main.views import main
-from .views import UserLoginView, UserSignupView, UserLogoutView, MyInfoView, UserListView, UserUpdateView
-
+from .views import UserLoginView, UserSignupView, UserLogoutView, MyInfoView, UserListView, UserUpdateView, UsertimeView, UserActiveVeiw
 
 urlpatterns = [
     path('signup/', UserSignupView.as_view(), name='signup'),
@@ -13,4 +12,6 @@ urlpatterns = [
     path('my_info/<str:username>/', MyInfoView.as_view(), name='my_info'),
     path('user_list/', UserListView.as_view(), name='user_list'),
     path('user-update/<int:pk>/', UserUpdateView.as_view(), name='user-update'),
+    path('usertime/<str:username>/', UsertimeView.as_view(), name='usertime'),
+    path('user_active/', UserActiveVeiw.as_view(), name='user_active'),
 ]

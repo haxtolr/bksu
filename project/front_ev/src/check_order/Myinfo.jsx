@@ -10,45 +10,53 @@ function Myinfo() {
     const [userInfo, setUserInfo] = useState(null);
 
     useEffect(() => {
-        if (authState !== null && authState.username && authState.token) {
-            const username = authState.username;
-    
-            Promise.all([
-                fetch(`${config.baseURL}accounts/my_info/${username}`, {
-                    headers: {
-                        'Authorization': `Token ${authState.token}`
+        const fetchData = () => {
+            if (authState !== null && authState.username && authState.token) {
+                const username = authState.username;
+        
+                Promise.all([
+                    fetch(`${config.baseURL}accounts/my_info/${username}`, {
+                        headers: {
+                            'Authorization': `Token ${authState.token}`
+                        }
+                    }).then(response => {
+                        if (!response.ok) {
+                            throw new Error('API 요청 실패');
+                        }
+                        return response.json();
+                    }).catch(error => ({error: error.message})),
+                    fetch(`${config.baseURL}api/user_orders/${username}`, {
+                        headers: {
+                            'Authorization': `Token ${authState.token}`
+                        }
+                    }).then(response => {
+                        if (!response.ok) {
+                            throw new Error('API 요청 실패');
+                        }
+                        return response.json();
+                    }).catch(error => ({ error: error.message }))
+                ]).then(([userInfo, orders]) => {
+                    if (userInfo.error) {
+                        console.log(`사용자 정보 요청 오류: ${userInfo.error}`);
+                    } else {
+                        setUserInfo(userInfo);
                     }
-                }).then(response => {
-                    if (!response.ok) {
-                        throw new Error('API 요청 실패');
+                    if (orders.error) {
+                        console.log(`주문 정보 요청 오류: ${orders.error}`);
+                    } else {
+                        setOrders(orders);
                     }
-                    return response.json();
-                }).catch(error => ({error: error.message})),
-                fetch(`${config.baseURL}api/user_orders/${username}`, {
-                    headers: {
-                        'Authorization': `Token ${authState.token}`
-                    }
-                }).then(response => {
-                    if (!response.ok) {
-                        throw new Error('API 요청 실패');
-                    }
-                    return response.json();
-                }).catch(error => ({ error: error.message }))
-            ]).then(([userInfo, orders]) => {
-                if (userInfo.error) {
-                    console.log(`사용자 정보 요청 오류: ${userInfo.error}`);
-                } else {
-                    setUserInfo(userInfo);
-                }
-                if (orders.error) {
-                    console.log(`주문 정보 요청 오류: ${orders.error}`);
-                } else {
-                    setOrders(orders);
-                }
-            }).catch(error => {
-                console.error('API 요청 오류:', error.message);
-            });
-        }
+                }).catch(error => {
+                    console.error('API 요청 오류:', error.message);
+                });
+            }
+        };
+
+        fetchData(); // 컴포넌트가 마운트될 때 한 번 호출
+        const intervalId = setInterval(fetchData, 5000); // 5초마다 fetchData를 호출
+
+        // 컴포넌트가 언마운트될 때 인터벌을 정리
+        return () => clearInterval(intervalId);
     }, [authState]);
 
     console.log(orders);
@@ -122,7 +130,7 @@ function Myinfo() {
                                                 </td>
                                                 <td className="px-5 py-5 border-b border-gray-200 bg-white text-lg">{order.destination}</td>
                                                 <td className="px-5 py-5 border-b border-gray-200 bg-white text-lg">{order.agv_id}</td>
-                                                <td className="px-5 py-5 border-b border-gray-200 bg-white text-lg">{order.order_accepted ? '배송 성공' : '배송 실패'}</td>
+                                                <td className="px-5 py-5 border-b border-gray-200 bg-white text-lg">{order.order_accepted === 1 ? '물건 목적지 도착' : (order.order_accepted === 0 ? '물품 배송 중' : '배송 완료')}</td>
                                                 <td className="px-5 py-5 border-b border-gray-200 bg-white text-lg">{order.order_time ? order.order_time : '정보 없음'}</td>
                                             </tr>
                                         ))}

@@ -14,6 +14,7 @@ import {
   IconButton,
   Box,
   TableSortLabel,
+  TextField,
 } from '@mui/material';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import { ExpandMore } from '@mui/icons-material';
@@ -27,6 +28,15 @@ function ManageOrder({ authToken }) {
   const [orders, setorders] = useState([]);
   const [orderDirection, setOrderDirection] = useState('asc');
   const [orderByField, setOrderByField] = useState('order_number');
+  const [searchTerm, setSearchTerm] = useState('');
+  const [products, setProducts] = useState([]);
+
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+  const filteredOrders = orders.filter((order) => 
+    order.order_number.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   const handleOpen = (product) => {
     setSelectedProduct(product);
@@ -36,8 +46,7 @@ function ManageOrder({ authToken }) {
   const handleToggle = () => {
     setOpen(!open);
   };
-
-  useEffect(() => {
+  const fetchOrders = () => {
     fetch(`${config.baseURL}api/allorders/`, {
       headers: {
         'Authorization': `Token ${authState.token}`
@@ -49,6 +58,14 @@ function ManageOrder({ authToken }) {
         setorders(data);
       })
       .catch(error => console.error(error));
+  };
+
+  useEffect(() => {
+    fetchOrders(); // Initial fetch
+
+    const intervalId = setInterval(fetchOrders, 5000); // Fetch every 5 seconds
+
+    return () => clearInterval(intervalId); // Cleanup on unmount
   }, []);
 
   const handleRequestSort = (property) => {
@@ -72,7 +89,16 @@ function ManageOrder({ authToken }) {
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
         <Typography variant="h4" component="h1" fontWeight="bold">
           주문 관리
-        </Typography>
+          </Typography>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, justifyContent: 'flex-end'}}>
+           <TextField
+              label="주문 번호 검색"
+              variant="outlined"
+              value={searchTerm}
+              onChange={handleSearchChange}
+              fullWidth
+            />
+          </Box>
       </Box>
       <Card>
         <CardHeader
@@ -161,7 +187,7 @@ function ManageOrder({ authToken }) {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {sortedorders.map((order) => (
+                {filteredOrders.map((order) => (
                   <TableRow key={order.id}>
                     <TableCell>{order.order_number}</TableCell>
                     <TableCell>{order.customer}</TableCell>

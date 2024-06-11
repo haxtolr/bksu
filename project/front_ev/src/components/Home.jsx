@@ -153,7 +153,7 @@ const Home = ({ cart, addToCart, removeFromCart }) => {
                       {item.preview1}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                      {item.quantity}
+                      수량 : {item.quantity}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
                       위치 : {item.location_number}

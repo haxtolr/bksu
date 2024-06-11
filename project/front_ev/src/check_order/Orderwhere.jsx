@@ -7,7 +7,8 @@ import config from '../components/config.js';
 function Orderwhere() {
     const { authState } = useAuth();  // authState 가져오기
     const [orderData, setOrderData] = useState(null);
-    const progress = 1;
+    const [progress, setProgress] = useState(0);
+    const [targetProgress, setTargetProgress] = useState(0);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -21,15 +22,28 @@ function Orderwhere() {
                     }
                 });
                 setOrderData(response.data);
-                console.log(response.data);
+                const location = response.data.agv.location;
+                const newTargetProgress = parseInt(location.replace('%', ''), 10);
+                setTargetProgress(newTargetProgress);  // setProgress는 progress state를 업데이트하는 함수;
             } catch (error) {
                 console.error('Error fetching data: ', error);
             }
         };
 
         fetchData();
-    }, [authState.token, authState.username]);
 
+        const intervalId = setInterval(fetchData, 5000);  // 매 5초마다 데이터를 요청합니다.
+        return () => clearInterval(intervalId);  // 컴포넌트가 언마운트될 때 인터벌을 정리합니다.
+    }, [authState.token, authState.username]);
+    useEffect(() => {
+        if (progress < targetProgress) {
+            // progress가 targetProgress보다 작으면 progress를 증가시킵니다.
+            const timeoutId = setTimeout(() => {
+                setProgress(progress + 1);
+            }, 100);  // 100ms마다 progress를 1씩 증가시킵니다.
+            return () => clearTimeout(timeoutId);  // 컴포넌트 unmount 시에 timeout을 clear합니다.
+        }
+    }, [progress, targetProgress]); 
     if (!orderData) return <div style={{ fontSize: '40px', color: 'white' }}>주문이 없습니다.</div>; // 주문 데이터가 없는 경우
 
     const currentTime = new Date();
@@ -50,10 +64,23 @@ function Orderwhere() {
         }, {});
     }
     // 상품 개수를 문자열로 변환
-    const productCountsString = Object.entries(productCounts)
-        .map(([product, count]) => `${product}: ${count}개`)
-        .join('\n');
+    //const productCountsString = Object.entries(productCounts)
+    //    .map(([product, count]) => `${product}: ${count}개`)
+    //    .join('\n');
 
+    if (orderData.order_accepted === 3) {
+        return <div style={{ 
+            display: 'flex', 
+            justifyContent: 'center', 
+            alignItems: 'center', 
+            height: '100vh', 
+            fontSize: '2em', 
+            color: '#FF69B4',
+            fontWeight: 'bold' 
+        }}>
+            주문 정보가 없습니다
+        </div>
+    }
     return (
         <div style={{ display: 'flex', flexDirection: 'row' }}>
             <div style={{ flex: 1, backgroundColor: '#FFF3FF', padding: '20px', margin: '20px', borderRadius: '10px' }}>
@@ -108,29 +135,60 @@ function Orderwhere() {
                                     />
                                 </div>
                             </div>
-                            <Button 
+                            <Button
                                 variant="contained" 
                                 color="primary" 
-                                style={{ 
+                                style={{
+                                    display: orderData.order_accepted !== 1 ? 'none' : 'block', // orderData.order_accepted가 1이 아닐 때 버튼 숨기기
                                     marginTop: '20px', 
                                     backgroundColor: '#FF69B4', 
                                     color: 'white', 
                                     padding: '10px 20px', 
                                     borderRadius: '5px', 
                                     fontSize: '18px', 
-                                    fontWeight: 'bold' 
-                                }}> 배송 완료
+                                    fontWeight: 'bold'
+                                }}
+                                onClick={async () => {
+                                    try {
+                                        const username = authState.username;
+                                        if (!username) return(console.error(authState.username));   
+
+                                        const response = await axios.patch(`${config.baseURL}api/latest_order/${authState.username}/`,
+                                            {
+                                                order_accepted: 2
+                                            },
+                                            {
+                                            headers: {
+                                                'Authorization': `Token ${authState.token}`  // 토큰을 헤더에 추가
+                                            }
+                                            });
+                                        console.log(response.data);
+                                    } catch (error) {
+                                        console.error(error);
+                                    }
+                                }}
+                                > 배송 완료
                             </Button>
                         </div>
                     </div>
                 </section>
             </div>
             <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', backgroundColor: '#FFF3FF', padding: '13px 13px', margin: '20px', borderRadius: '10px'}}>
-                <div style={{ flex: 1, marginBottom: '0.25em' }}>
-                    <iframe title="AGV Video" src="http://172.30.1.73:8080/?action=stream" width="640" height="320" style={{ border: '2px solid black', borderRadius: '10px' }}></iframe>
+                <div style={{ width: '640px', height: '320px', overflow: 'hidden', marginBottom: '20px' }}>
+                    <h3 style={{ margin: '0 0 10px 0' }}>AGV 영상</h3>
+                    <img
+                        src={orderData?.agv?.agv_camera}
+                        alt="AGV Camera"
+                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    />
                 </div>
-                <div style={{ flex: 1 }}>
-                    <iframe title="RACK Video" src="https://www.youtube.com/watch?v=gX2ZYFyGjmU" width="640" height="320" style={{ border: '2px solid black', borderRadius: '10px' }}></iframe>
+                <div style={{ width: '640px', height: '390px', overflow: 'hidden' }}>
+                    <h3 style={{ margin: '0 0 10px 0' }}>Rack 영상</h3>
+                    <img
+                        src="http://172.30.1.9:7120/?action=stream"
+                        alt="Rack Camera"
+                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    />
                 </div>
             </div>
         </div>

@@ -33,12 +33,12 @@ function DeliveryButton({ cart, deliveryLocation }) {
         });
     
         if (response.ok) {
-            setMessage('배송 성공하셨습니다.');
+            setMessage({ type: 'success', text: '배송 요청을 성공하셨습니다.'});
         } else {
-            setMessage('배송 요청이 실패했습니다.');
+            setMessage({ type : 'error', text :'배송 요청이 실패했습니다. 배송 위치, 상품 수량을 확인해주세요.'});
         }
     };
-
+    
     return (
         <div>
             <button 
@@ -62,7 +62,7 @@ function DeliveryButton({ cart, deliveryLocation }) {
             >
                 배송
             </button>
-            {message && <p>{message}</p>}
+            {message.text && <p style={{ color: message.type === 'error' ? 'red' : 'green' }}>{message.text}</p>}
         </div>
     );
 }

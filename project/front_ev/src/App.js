@@ -45,7 +45,7 @@ function Main() {
   const [cart, setCart] = useState([]);
 
   const addToCart = (item) => {
-    if (cart.length >= 5) {
+    if (cart.length >= 3) {
       alert('더 이상 추가할 수 없습니다');
     } else {
       setCart([...cart, item]);

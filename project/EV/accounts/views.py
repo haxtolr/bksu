@@ -48,6 +48,8 @@ class UserLogoutView(APIView): # 로그아웃
             # 로그인된 사용자에 대해서만 로그아웃 처리
             request.user.is_active = False
             request.user.last_logout = timezone.now()
+            request.user.day_time = request.data.get('day_time')  # 추가된 코드
+            request.user.week_time = request.data.get('week_time')  # 추가된 코드
             request.user.save()
             response_data = {
                 "message": "Logout successful."
@@ -112,8 +114,26 @@ class UserUpdateView(APIView):
         else:
             return Response({"message": "Permission denied."}, status=status.HTTP_403_FORBIDDEN)
 
+class UsertimeView(APIView):
+    def get(self, request, username, format=None):
+        user = get_user_model().objects.filter(username=username).first()
+        if user:
+            response_data = {
+                "day_time": user.day_time,
+                "week_time": user.week_time
+            }
+            return Response(response_data)
+        else:
+            return Response({"message": "User not found."}, status=status.HTTP_404_NOT_FOUND)
+
 def logout(request):
     auth.logout(request)
     messages.info(request, '로그아웃 되었습니다.')
     return redirect('/main/')
 
+class UserActiveVeiw(APIView):
+    #접속중인 유저 확인
+    def get(self, request, format=None):
+        active_users = get_user_model().objects.filter(is_active=True)
+        serializer = UserDetailSerializer(active_users, many=True)
+        return Response(serializer.data)

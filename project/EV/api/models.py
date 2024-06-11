@@ -22,10 +22,9 @@ class Agv(models.Model):
 class Order(models.Model):
     order_number = models.CharField(max_length=255)
     customer = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
-    #products = models.ManyToManyField(Product, blank=True)
     products = models.ManyToManyField(Product, through='Order_Product', blank=True)
     agv_id = models.ForeignKey(Agv, on_delete=models.SET_NULL, null=True, blank=True, related_name='orders')
-    order_accepted = models.BooleanField(default=False)
+    order_accepted = models.IntegerField(default=0, choices=[(-1, 'Rejected'), (0, 'Pending'), (1, 'Accepted'), (2, 'done'), (3, 'old')])
     destination = models.CharField(max_length=255)
     order_time = models.DateTimeField(auto_now=True)
     estimated_time = models.DateTimeField(null=True)
