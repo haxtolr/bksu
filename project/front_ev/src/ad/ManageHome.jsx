@@ -14,7 +14,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-
+import Grid from '@material-ui/core/Grid';
 
 const ManageHome = () => {
   const { authState } = useAuth();
@@ -71,7 +71,7 @@ const ManageHome = () => {
   };
 
   return (
-    <div className="flex h-screen w-full">
+    <div className="flex h-full w-full">
       <main className="flex-1 bg-gray-100 ">
         <div className="container mx-auto py-8 px-4 md:px-6 lg:px-8">
           <div className="flex items-center mb-2">
@@ -220,7 +220,7 @@ const ManageHome = () => {
                   <div style={{ width: '640px', height: '390px', overflow: 'hidden' }}>
                     <img 
                       alt="RACK Video" 
-                      src="http://172.30.1.9:7120/?action=stream"
+                      src="http://172.30.1.65:7120/?action=stream"
                       width="100%" 
                       height="100%" 
                       style={{ width: '100%', height: '100%', objectFit: 'cover' }}
@@ -264,10 +264,22 @@ const ManageHome = () => {
             </TableContainer>
             </Box>
           </div>
+          <div style={{position: 'relative', zIndex: 1 }}>
+                <Box marginTop={3}>
+                  <h2 className="text-lg font-bold mb-4 text-gray-900">CCTV</h2>
+                  <Grid container spacing={3}>
+                    <Grid item xs={6}>
+                      <img src="http://172.30.1.65:7121/?action=stream" alt="CCTV 1" width="640" height="320" />
+                    </Grid>
+                    <Grid item xs={6}>
+                      <img src="http://172.30.1.9:7122/?action=stream" alt="CCTV 2" width="640" height="320" />
+                    </Grid>
+                  </Grid>
+                </Box>
+              </div>
         </div>
       </main>
-    </div>
-    
+    </div>    
   );
 };
 

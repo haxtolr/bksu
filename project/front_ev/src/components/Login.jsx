@@ -96,11 +96,11 @@ export default function LoginComponent() {
         </div>
         <div className="space-y-4">
           <div>
-            <Label className="text-[#5b5b8c]" htmlFor="username">
+            <Label className="text-[#060b14]" htmlFor="username">
               아이디
             </Label>
             <Input
-              className="mt-1 w-full rounded-md border border-[#d0d0e0] bg-[#f8f8f8] px-3 py-2 text-[#f3eeee] placeholder:text-[#a0a0b0] focus:border-[#9090c0] focus:outline-none "
+              className="mt-1 w-full rounded-md border border-[#060b14] bg-[#f8f8f8] px-3 py-2 text-[#000000] placeholder:text-[#a0a0b0] focus:border-[#9090c0] focus:outline-none "
               id="username"
               placeholder="아이디를 입력해주세요."
               type="text"
@@ -109,11 +109,11 @@ export default function LoginComponent() {
             />
           </div>
           <div>
-            <Label className="text-[#5b5b8c]" htmlFor="password">
+            <Label className="text-[#060b14]" htmlFor="password">
               비밀번호
             </Label>
             <Input
-              className="mt-1 w-full rounded-md border border-[#d0d0e0] bg-[#f8f8f8] px-3 py-2 text-[#f3eeee] placeholder:text-[#a0a0b0] focus:border-[#9090c0] focus:outline-none "
+              className="mt-1 w-full rounded-md border border-[#060b14] bg-[#f8f8f8] px-3 py-2 text-[#000000] placeholder:text-[#a0a0b0] focus:border-[#9090c0] focus:outline-none "
               id="password"
               placeholder="비밀번호를 입력해주세요"
               type="password"

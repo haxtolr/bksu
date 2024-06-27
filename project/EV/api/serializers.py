@@ -70,13 +70,12 @@ class OrderSerializer(serializers.ModelSerializer):
 
         # agv_id, estimated_time, order_number 설정
         agv = Agv.objects.filter(status='rd').order_by('id').first()
-        if agv:
-        # agv의 order_id 필드를 업데이트
-            agv.order_id = order.id
-            agv.save()
-        else:
+        if not agv:
             logger.info("No available AGV")
             raise serializers.ValidationError("No available AGV")
+        agv.order_id = order.id
+        agv.save()
+
         order.agv_id = agv if agv else None
         order.estimated_time = order.order_time + timezone.timedelta(minutes=10)
         order.order_number = "#" + str(order.id + 1000)

@@ -10,7 +10,6 @@ from channels.layers import get_channel_layer
 from asgiref.sync import async_to_sync
 from .models import Order, Order_Product, Agv
 
-
 @receiver(post_save, sender=Order_Product) 
 def order_created(sender, instance, created, **kwargs): 
     if created:
@@ -26,7 +25,6 @@ def order_created(sender, instance, created, **kwargs):
             'quantity': instance.quantity,
         }
         order_data['products'].append(product_data)
-
         async_to_sync(channel_layer.group_send)(
             'orders',
             {

@@ -185,7 +185,7 @@ function Orderwhere() {
                 <div style={{ width: '640px', height: '390px', overflow: 'hidden' }}>
                     <h3 style={{ margin: '0 0 10px 0' }}>Rack 영상</h3>
                     <img
-                        src="http://172.30.1.9:7120/?action=stream"
+                        src="http://172.30.1.18:7120/?action=stream"
                         alt="Rack Camera"
                         style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                     />

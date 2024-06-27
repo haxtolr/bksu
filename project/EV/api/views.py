@@ -1,13 +1,10 @@
 from rest_framework import viewsets, status
-from .serializers import AgvSerializer, ArmSerializer, OrderSerializer, OrderProductCountSerializer, OrderSendSerializer, RackSerializer, OrderListSerializer
+from .serializers import AgvSerializer, ArmSerializer, OrderSerializer
+from .serializers import OrderProductCountSerializer, OrderSendSerializer, RackSerializer, OrderListSerializer
 from .models import Agv, Arm, Order, Rack, Order_Product
 from rest_framework.response import Response
 from rest_framework.views import APIView
-import logging
 from django.http import JsonResponse
-
-
-logger = logging.getLogger(__name__)
 
 class AgvViewSet(viewsets.ModelViewSet):
     queryset = Agv.objects.all()

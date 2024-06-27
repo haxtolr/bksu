@@ -1,6 +1,7 @@
 from django.urls import include, path
 from rest_framework.routers import DefaultRouter
-from .views import AgvViewSet, ArmViewSet, OrderViewSet, LatestOrderView, UserOrdersView, RackViewSet, AllOrdersView
+from .views import AgvViewSet, ArmViewSet, OrderViewSet, LatestOrderView
+from. views import UserOrdersView, RackViewSet, AllOrdersView
 from .views import my_agv
 
 router = DefaultRouter()

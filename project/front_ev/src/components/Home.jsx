@@ -122,7 +122,7 @@ const Home = ({ cart, addToCart, removeFromCart }) => {
           <Link
             className="text-white bg-blue-500 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 text-lg"
             to="/check_order"
-            style={{ padding: '10px 20px', borderRadius: '4px', textDecoration: 'none' }}
+            style={{ padding: '10px 20px', borderRadius: '4px', textDecoration: 'none' , marginTop: '10px'}}
           >
             주문 확인
           </Link>

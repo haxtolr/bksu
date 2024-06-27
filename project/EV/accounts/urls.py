@@ -2,7 +2,8 @@
 from django.urls import path
 from . import views
 from main.views import main
-from .views import UserLoginView, UserSignupView, UserLogoutView, MyInfoView, UserListView, UserUpdateView, UsertimeView, UserActiveVeiw
+from .views import UserLoginView, UserSignupView, UserLogoutView
+from .views import MyInfoView, UserListView, UserUpdateView, UsertimeView, UserActiveVeiw
 
 urlpatterns = [
     path('signup/', UserSignupView.as_view(), name='signup'),

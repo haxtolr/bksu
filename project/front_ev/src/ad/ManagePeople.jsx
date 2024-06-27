@@ -176,7 +176,7 @@ function ManagePeople() {
             <Table>
               <TableHead className="bg-gray-200">
                 <TableRow>
-                  {['사번', '이름', '직급', '전화번호', 'ID', '주간', '일간', '최근 로그인시간', 'TEST', '접속중', '관리자 권한', '가입 승인'].map((key, index) => (
+                  {['사번', '이름', '직급', '전화번호', 'ID', '주간', '일간', '최근 로그인시간','접속중', '관리자 권한', '가입 승인'].map((key, index) => (
                     <TableCell key={index} style={{ whiteSpace: 'nowrap' }}>
                       <TableSortLabel
                         IconComponent={props => <ArrowDropDownIcon {...props} style={{ fontSize: '1rem' }} />}
@@ -205,7 +205,6 @@ function ManagePeople() {
                     <TableCell>{Math.floor(user.week_time / 60)}시간 {user.week_time%60}분</TableCell>
                     <TableCell>{Math.floor(user.day_time / 60)}시간 {user.day_time%60}분</TableCell>
                     <TableCell>{new Date(user.login_time).toLocaleTimeString()}</TableCell>
-                    <TableCell>버튼 넣기</TableCell>
                     <TableCell>
                       {user.is_active ? (
                         <CheckCircleIcon style={{ color: 'green' }} />

@@ -98,7 +98,7 @@ export default function Component() {
                 아이디
               </Label>
               <Input
-                className="custom-placeholder mt-1 w-full rounded-md border border-[#d0d0e0] bg-[#f8f8f8] px-3 py-2 text-[#f3eeee] focus:border-[#9090c0] focus:outline-none"
+                className="custom-placeholder mt-1 w-full rounded-md border border-[#d0d0e0] bg-[#f8f8f8] px-3 py-2 text-[#000000] focus:border-[#9090c0] focus:outline-none"
                 id="username"
                 placeholder="아이디를 입력하세요"
                 required
@@ -117,7 +117,7 @@ export default function Component() {
                 비밀번호
               </Label>
               <Input
-                className="custom-placeholder mt-1 w-full rounded-md border border-[#d0d0e0] bg-[#f8f8f8] px-3 py-2 text-[#f3eeee] focus:border-[#9090c0] focus:outline-none"
+                className="custom-placeholder mt-1 w-full rounded-md border border-[#d0d0e0] bg-[#f8f8f8] px-3 py-2 text-[#000000] focus:border-[#9090c0] focus:outline-none"
                 id="password"
                 placeholder="비밀번호를 입력하세요"
                 required
@@ -137,7 +137,7 @@ export default function Component() {
                 비밀번호 확인
               </Label>
               <Input
-                className="custom-placeholder mt-1 w-full rounded-md border border-[#d0d0e0] bg-[#f8f8f8] px-3 py-2 text-[#f3eeee] focus:border-[#9090c0] focus:outline-none"
+                className="custom-placeholder mt-1 w-full rounded-md border border-[#d0d0e0] bg-[#f8f8f8] px-3 py-2 text-[#000000] focus:border-[#9090c0] focus:outline-none"
                 id="password-confirm"
                 placeholder="비밀번호를 다시 입력하세요"
                 required
@@ -152,7 +152,7 @@ export default function Component() {
                 이름
               </Label>
               <Input
-                className="custom-placeholder mt-1 w-full rounded-md border border-[#d0d0e0] bg-[#f8f8f8] px-3 py-2 text-[#f3eeee] focus:border-[#9090c0] focus:outline-none"
+                className="custom-placeholder mt-1 w-full rounded-md border border-[#d0d0e0] bg-[#f8f8f8] px-3 py-2 text-[#000000] focus:border-[#9090c0] focus:outline-none"
                 id="name"
                 placeholder="이름을 입력하세요"
                 required
@@ -168,7 +168,7 @@ export default function Component() {
               </Label>
               <div className="flex space-x-2">
                 <Input
-                  className="custom-placeholder mt-1 w-1/3 rounded-md border border-[#d0d0e0] bg-[#f8f8f8] px-3 py-2 text-[#f3eeee] focus:border-[#9090c0] focus:outline-none"
+                  className="custom-placeholder mt-1 w-1/3 rounded-md border border-[#d0d0e0] bg-[#f8f8f8] px-3 py-2 text-[#000000] focus:border-[#9090c0] focus:outline-none"
                   id="phone1"
                   placeholder="010"
                   required
@@ -178,7 +178,7 @@ export default function Component() {
                   onChange={(event) => setPhone1(event.target.value)}
                 />
                 <Input
-                  className="custom-placeholder mt-1 w-1/3 rounded-md border border-[#d0d0e0] bg-[#f8f8f8] px-3 py-2 text-[#f3eeee] focus:border-[#9090c0] focus:outline-none"
+                  className="custom-placeholder mt-1 w-1/3 rounded-md border border-[#d0d0e0] bg-[#f8f8f8] px-3 py-2 text-[#000000] focus:border-[#9090c0] focus:outline-none"
                   id="phone2"
                   placeholder="1234"
                   required
@@ -188,7 +188,7 @@ export default function Component() {
                   onChange={(event) => setPhone2(event.target.value)}
                 />
                 <Input
-                  className="custom-placeholder mt-1 w-1/3 rounded-md border border-[#d0d0e0] bg-[#f8f8f8] px-3 py-2 text-[#f3eeee] focus:border-[#9090c0] focus:outline-none"
+                  className="custom-placeholder mt-1 w-1/3 rounded-md border border-[#d0d0e0] bg-[#f8f8f8] px-3 py-2 text-[#000000] focus:border-[#9090c0] focus:outline-none"
                   id="phone3"
                   placeholder="5678"
                   required

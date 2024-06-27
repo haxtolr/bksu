@@ -26,6 +26,9 @@ import { ResponsivePie } from '@nivo/pie';
 import config from '../components/config.js';
 import { useAuth } from '../components/AuthProvider.js';
 import AddProductButton from './ad_utils/AddProductButton.jsx';
+import ProductPie from './ad_utils/productPie.jsx';
+import InventoryChart from './ad_utils/ProductBar.jsx';
+
 
 function ManageProduct({ authToken }) {
   const { authState } = useAuth();
@@ -232,26 +235,26 @@ function ManageProduct({ authToken }) {
           </CardContent>
         </Collapse>
       </Card>
-      <Box sx={{ display: 'grid', gap: 3, mt: 4, gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))' }}>
-        <Card>
-          <CardHeader title="Sales Trends" />
-          <CardContent>
-            <LineChart />
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader title="Inventory Levels" />
-          <CardContent>
-            <BarChart />
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader title="Top Selling Products" />
-          <CardContent>
-            <PieChart />
-          </CardContent>
-        </Card>
-      </Box>
+      <Box sx={{ 
+  display: 'grid', 
+  gap: 2, 
+  mt: 3, 
+  gridTemplateColumns: '1fr 1fr', // 각 열이 동일한 비율로 나누어집니다.
+  height: '500px', // 박스의 높이를 500px로 설정합니다.
+}}>
+  <Card>
+    <CardHeader title="재고 차트"/>
+    <CardContent>
+      <InventoryChart products={filteredProducts} />
+    </CardContent>
+  </Card>
+  <Card>
+    <CardHeader title="주문이 많이 된 지역" />
+    <CardContent>
+      <ProductPie />
+    </CardContent>
+  </Card>
+</Box>
       <Modal open={imageModalOpen} onClose={handleCloseModal}>
         <Box sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: 400, bgcolor: 'background.paper', border: '2px solid #000', boxShadow: 24, p: 4 }}>
           <Typography variant="h6" component="h2">
@@ -284,163 +287,6 @@ function ManageProduct({ authToken }) {
       </Modal>
     </Box>
 );
-}
-
-function BarChart(props) {
-  return (
-    <Box {...props}>
-      <ResponsiveBar
-        data={[
-          { name: 'Jan', count: 111 },
-          { name: 'Feb', count: 157 },
-          { name: 'Mar', count: 129 },
-          { name: 'Apr', count: 150 },
-          { name: 'May', count: 119 },
-          { name: 'Jun', count: 72 },
-        ]}
-        keys={['count']}
-        indexBy="name"
-        margin={{ top: 20, right: 20, bottom: 50, left: 60 }}
-        padding={0.3}
-        colors={['#2563eb']}
-        axisBottom={{
-          tickSize: 5,
-          tickPadding: 5,
-          tickRotation: 0,
-          legend: 'Month',
-          legendPosition: 'middle',
-          legendOffset: 32,
-        }}
-        axisLeft={{
-          tickSize: 5,
-          tickPadding: 5,
-          tickRotation: 0,
-          legend: 'Count',
-          legendPosition: 'middle',
-          legendOffset: -40,
-        }}
-        gridYValues={4}
-        theme={{
-          tooltip: {
-            container: {
-              fontSize: '12px',
-            },
-          },
-        }}
-        enableLabel={false}
-        role="application"
-        ariaLabel="Bar chart representing inventory levels by month"
-      />
-    </Box>
-  );
-}
-
-function LineChart(props) {
-  return (
-    <Box {...props}>
-      <ResponsiveLine
-        data={[
-          {
-            id: 'Desktop',
-            data: [
-              { x: 'Jan', y: 43 },
-              { x: 'Feb', y: 137 },
-              { x: 'Mar', y: 61 },
-              { x: 'Apr', y: 145 },
-              { x: 'May', y: 26 },
-              { x: 'Jun', y: 154 },
-            ],
-          },
-          {
-            id: 'Mobile',
-            data: [
-              { x: 'Jan', y: 60 },
-              { x: 'Feb', y: 48 },
-              { x: 'Mar', y: 177 },
-              { x: 'Apr', y: 78 },
-              { x: 'May', y: 96 },
-              { x: 'Jun', y: 204 },
-            ],
-          },
-        ]}
-        margin={{ top: 20, right: 20, bottom: 50, left: 60 }}
-        xScale={{ type: 'point' }}
-        yScale={{ type: 'linear', stacked: true, min: 'auto', max: 'auto' }}
-        axisBottom={{
-          tickSize: 5,
-          tickPadding: 5,
-          tickRotation: 0,
-          legend: 'Month',
-          legendPosition: 'middle',
-          legendOffset: 32,
-        }}
-        axisLeft={{
-          tickSize: 5,
-          tickPadding: 5,
-          tickRotation: 0,
-          legend: 'Sales',
-          legendPosition: 'middle',
-          legendOffset: -40,
-        }}
-        colors={['#2563eb', '#e11d48']}
-        pointSize={10}
-        pointColor={{ theme: 'background' }}
-        pointBorderWidth={2}
-        pointBorderColor={{ from: 'serieColor' }}
-        pointLabelYOffset={-12}
-        useMesh={true}
-        theme={{
-          tooltip: {
-            container: {
-              fontSize: '12px',
-            },
-          },
-        }}
-        role="application"
-        ariaLabel="Line chart representing sales trends"
-      />
-    </Box>
-  );
-}
-
-function PieChart(props) {
-  return (
-    <Box {...props}>
-      <ResponsivePie
-        data={[
-          { id: 'Jan', value: 111 },
-          { id: 'Feb', value: 157 },
-          { id: 'Mar', value: 129 },
-          { id: 'Apr', value: 150 },
-          { id: 'May', value: 119 },
-          { id: 'Jun', value: 72 },
-        ]}
-        sortByValue={true}
-        margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
-        innerRadius={0.5}
-        padAngle={0.7}
-        cornerRadius={3}
-        activeOuterRadiusOffset={8}
-        borderWidth={1}
-        borderColor={{ from: 'color', modifiers: [['darker', 0.2]] }}
-        arcLinkLabelsSkipAngle={10}
-        arcLinkLabelsTextColor="#333333"
-        arcLinkLabelsThickness={2}
-        arcLinkLabelsColor={{ from: 'color' }}
-        arcLabelsSkipAngle={10}
-        arcLabelsTextColor={{ from: 'color', modifiers: [['darker', 2]] }}
-        theme={{
-          tooltip: {
-            container: {
-              fontSize: '12px',
-            },
-          },
-        }}
-        role="application"
-        ariaLabel="Pie chart representing top selling products"
-      />
-    </Box>
-  );
 }
 
 export default ManageProduct;
