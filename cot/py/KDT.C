@@ -7,7 +7,6 @@ int main()
 
     a = 0;
     print("%d", a)
-    printf("RAOJKETSWWCU\n");
     printf("%s", s);
 }
 
