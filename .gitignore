@@ -361,6 +361,7 @@ CATKIN_IGNORE
 *.pptx
 *.pdf 
 .DS_Store
-
+KDT.c
+a.out
 
 # End of https://www.toptal.com/developers/gitignore/api/c,visualstudiocode,c++,cmake,python,java,ros
