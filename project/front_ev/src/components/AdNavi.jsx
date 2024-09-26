@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from "./ui/button";
+<<<<<<< HEAD
 import { SheetTrigger, SheetContent, Sheet } from "./ui/sheet";
 import { useAuth } from './AuthProvider.js';
 import config from './config.js';
@@ -8,6 +9,12 @@ import LogoutComponent from './Logout';
 import axios from 'axios';
 import { ReactComponent as MountainSVG } from '/Users/heecjang/bksu/project/front_ev/src/lib/logo.svg';
 
+=======
+//import { useNavigate } from 'react-router-dom';
+import { SheetTrigger, SheetContent, Sheet } from "./ui/sheet";
+import { useAuth } from './AuthProvider.js';
+import LogoutComponent from './Logout';
+>>>>>>> e5f4478e466ed135085eb68ad645afc355701127
 
 
 export default function AdNavi() {
@@ -16,6 +23,7 @@ export default function AdNavi() {
   const [dailyTime, setDailyTime] = useState(0);
 
   useEffect(() => {
+<<<<<<< HEAD
     const fetchTime = async () => {
       console.log('authState: ', authState);
       if (authState && authState.isLoggedIn) {
@@ -52,12 +60,35 @@ export default function AdNavi() {
     }, 60000); // 매 분마다 갱신
 
     return () => {
+=======
+    let weeklyTimer, dailyTimer;
+  
+    // 주간 타이머 시작
+    weeklyTimer = setInterval(() => {
+      if (authState) { // 로그인 상태일 때
+        setWeeklyTime((prevTime) => prevTime + 1);
+      }
+    }, 60000); // 매 분마다 갱신
+  
+    // 일일 타이머 시작
+    dailyTimer = setInterval(() => {
+      if (authState) { // 로그인 상태일 때
+        setDailyTime((prevTime) => prevTime + 1);
+      }
+    }, 60000); // 매 분마다 갱신
+  
+    return () => {
+      // 컴포넌트가 언마운트되면 타이머를 정리합니다.
+>>>>>>> e5f4478e466ed135085eb68ad645afc355701127
       clearInterval(weeklyTimer);
       clearInterval(dailyTimer);
     };
   }, [authState]);
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> e5f4478e466ed135085eb68ad645afc355701127
   return (
     <div key="1" className="flex h-16 w-full flex-col bg-[#e0e0ff]" >
       <header className="flex h-16 w-full items-center justify-between bg-white px-4 shadow-md md:px-6" >
@@ -109,7 +140,11 @@ export default function AdNavi() {
               <nav className="flex flex-col items-start space-y-4">
                 <Link
                   className="text-[#5b5b8c] hover:text-[#7070b0] focus:outline-none focus:ring-2 focus:ring-[#9090c0] focus:ring-offset-2 text-lg"
+<<<<<<< HEAD
                   to ="/ManageHome"
+=======
+                  href="#"
+>>>>>>> e5f4478e466ed135085eb68ad645afc355701127
                 >
                   Home
                 </Link>
@@ -143,6 +178,7 @@ export default function AdNavi() {
         </Sheet>
         <div className="flex items-center space-x-4">
         <span className="ml-2 text-xl font-bold text-[#5b5b8c]">{authState.isLoggedIn && <span>{authState.username}</span>}  </span>
+<<<<<<< HEAD
         <div className="flex items-center space-x-2">
                 <ClockIcon className="h-5 w-5 text-[#5b5b8c]" />
                 <span className="text-[#5b5b8c]">
@@ -167,6 +203,21 @@ export default function AdNavi() {
       </header>
     </div>
   );
+=======
+          <div className="flex items-center space-x-2">
+            <ClockIcon className="h-5 w-5 text-[#5b5b8c]" />
+            <span className="text-[#5b5b8c]">주간: {weeklyTime}</span>
+          </div>
+          <div className="flex items-center space-x-2">
+            <ClockIcon className="h-5 w-5 text-[#5b5b8c]" />
+            <span className="text-[#5b5b8c]">오늘 : {dailyTime}</span>
+          </div>
+          <LogoutComponent />
+        </div>
+      </header>
+    </div>
+  )
+>>>>>>> e5f4478e466ed135085eb68ad645afc355701127
 }
 
 
@@ -212,6 +263,7 @@ function MenuIcon(props) {
   )
 }
 
+<<<<<<< HEAD
 function MountainIcon(props) {
   return (
     <MountainSVG
@@ -223,3 +275,24 @@ function MountainIcon(props) {
     />  
   );
 }
+=======
+
+function MountainIcon(props) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="m8 3 4 8 5-5 5 15H2L8 3z" />
+    </svg>
+  )
+}
+>>>>>>> e5f4478e466ed135085eb68ad645afc355701127

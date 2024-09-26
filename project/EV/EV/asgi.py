@@ -6,6 +6,7 @@ It exposes the ASGI callable as a module-level variable named ``application``.
 For more information on this file, see
 https://docs.djangoproject.com/en/5.0/howto/deployment/asgi/
 """
+<<<<<<< HEAD
 import os
 import django
 from .wsgi import *
@@ -26,3 +27,13 @@ application = ProtocolTypeRouter({
         )
     ),
 })
+=======
+
+import os
+
+from django.core.asgi import get_asgi_application
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'EV.settings')
+
+application = get_asgi_application()
+>>>>>>> e5f4478e466ed135085eb68ad645afc355701127

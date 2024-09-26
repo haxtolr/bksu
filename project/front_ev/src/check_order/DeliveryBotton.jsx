@@ -33,12 +33,21 @@ function DeliveryButton({ cart, deliveryLocation }) {
         });
     
         if (response.ok) {
+<<<<<<< HEAD
             setMessage({ type: 'success', text: '배송 요청을 성공하셨습니다.'});
         } else {
             setMessage({ type : 'error', text :'배송 요청이 실패했습니다. 배송 위치, 상품 수량을 확인해주세요.'});
         }
     };
     
+=======
+            setMessage('배송 성공하셨습니다.');
+        } else {
+            setMessage('배송 요청이 실패했습니다.');
+        }
+    };
+
+>>>>>>> e5f4478e466ed135085eb68ad645afc355701127
     return (
         <div>
             <button 
@@ -62,7 +71,11 @@ function DeliveryButton({ cart, deliveryLocation }) {
             >
                 배송
             </button>
+<<<<<<< HEAD
             {message.text && <p style={{ color: message.type === 'error' ? 'red' : 'green' }}>{message.text}</p>}
+=======
+            {message && <p>{message}</p>}
+>>>>>>> e5f4478e466ed135085eb68ad645afc355701127
         </div>
     );
 }

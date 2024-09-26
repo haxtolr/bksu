@@ -1,9 +1,17 @@
 from django.db import models
+<<<<<<< HEAD
+=======
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+>>>>>>> e5f4478e466ed135085eb68ad645afc355701127
 from django.utils import timezone
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
 
+<<<<<<< HEAD
 class UserManager(models.Manager):
+=======
+class UserManager(BaseUserManager):
+>>>>>>> e5f4478e466ed135085eb68ad645afc355701127
     def create_user(self, username, password=None, **extra_fields):
         if not username:
             raise ValueError('The Username field must be set')
@@ -26,7 +34,10 @@ class UserManager(models.Manager):
         return self.create_user(username, password, **extra_fields)
 
 
+<<<<<<< HEAD
 from django.contrib.auth.models import AbstractBaseUser
+=======
+>>>>>>> e5f4478e466ed135085eb68ad645afc355701127
 
 class User(AbstractBaseUser):
     id = models.AutoField(primary_key=True)
@@ -36,8 +47,13 @@ class User(AbstractBaseUser):
     rank = models.CharField(max_length=50, default='사원')
     login_time = models.DateTimeField(auto_now=True)
     logout_time = models.DateTimeField(null=True, blank=True)
+<<<<<<< HEAD
     day_time = models.IntegerField(default=0)
     week_time = models.IntegerField(default=0)
+=======
+    day_time = models.DateTimeField(null=True, blank=True)
+    week_time = models.DateTimeField(null=True, blank=True)
+>>>>>>> e5f4478e466ed135085eb68ad645afc355701127
     is_approved = models.BooleanField(default=False)
     is_active = models.BooleanField(default=False)
     is_admin = models.BooleanField(default=False)
@@ -56,8 +72,13 @@ class User(AbstractBaseUser):
     def logout(self):
         if self.login_time:
             duration = timezone.now() - self.login_time
+<<<<<<< HEAD
             #self.day_time = duration if self.day_time is None else self.day_time + duration
             #self.week_time = duration if self.week_time is None else self.week_time + duration
+=======
+            self.day_time = duration if self.day_time is None else self.day_time + duration
+            self.week_time = duration if self.week_time is None else self.week_time + duration
+>>>>>>> e5f4478e466ed135085eb68ad645afc355701127
             self.logout_time = timezone.now()
             self.save()
 
@@ -74,9 +95,18 @@ class User(AbstractBaseUser):
 @receiver(pre_save, sender=User)
 def reset_week_time(sender, instance, **kwargs):
     if timezone.now().weekday() == 0 and timezone.now().hour == 0:
+<<<<<<< HEAD
         instance.week_time = 0
 
 @receiver(pre_save, sender=User)
 def reset_day_time(sender, instance, **kwargs): #
     if timezone.now().hour == 0:
         instance.day_time = 0
+=======
+        instance.week_time = timezone.now()
+
+@receiver(pre_save, sender=User)
+def reset_day_time(sender, instance, **kwargs):
+    if timezone.now().hour == 0:
+        instance.day_time = timezone.now()
+>>>>>>> e5f4478e466ed135085eb68ad645afc355701127

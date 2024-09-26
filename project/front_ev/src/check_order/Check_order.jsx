@@ -57,12 +57,20 @@ function Check_order({ cart, removeFromCart }) {
                {item.product_name}
              </Typography>
              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+<<<<<<< HEAD
                   <Typography variant="body1" color="textSecondary">
+=======
+                  <Typography variant="body1" color="text.secondary">
+>>>>>>> e5f4478e466ed135085eb68ad645afc355701127
                     {item.preview1}
                   </Typography>
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+<<<<<<< HEAD
                   <Typography variant="body2" color="textSecondary">
+=======
+                  <Typography variant="body2" color="text.secondary">
+>>>>>>> e5f4478e466ed135085eb68ad645afc355701127
                     {item.location_number}
                   </Typography>
                     <DeleteIcon onClick={() => removeFromCart(index)} />
@@ -82,7 +90,11 @@ function Check_order({ cart, removeFromCart }) {
                 }}>
         배송 준비</h4>
         <div style={{ backgroundColor: '#f8f8f8', padding: '20px', borderRadius: '10px', margin: '10px 0' }}>
+<<<<<<< HEAD
           <p style={{ fontSize: '40px', margin: '10px 0' }}>기기의 배송 가능 여부</p>
+=======
+          <p style={{ fontSize: '40px', margin: '10px 0' }}>배송 가능 여부</p>
+>>>>>>> e5f4478e466ed135085eb68ad645afc355701127
           <div style={{ 
                         height: '40px', 
                         width: '99%', 

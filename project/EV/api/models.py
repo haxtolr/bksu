@@ -22,19 +22,28 @@ class Agv(models.Model):
 class Order(models.Model):
     order_number = models.CharField(max_length=255)
     customer = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+<<<<<<< HEAD
     products = models.ManyToManyField(Product, through='Order_Product', blank=True)
     agv_id = models.ForeignKey(Agv, on_delete=models.SET_NULL, null=True, blank=True, related_name='orders')
     order_accepted = models.IntegerField(default=0, choices=[(-1, 'Rejected'), (0, 'Pending'), (1, 'Accepted'), (2, 'done'), (3, 'old')])
+=======
+    products = models.ManyToManyField(Product, blank=True)
+    agv_id = models.ForeignKey(Agv, on_delete=models.SET_NULL, null=True, blank=True, related_name='orders')
+    order_accepted = models.BooleanField(default=False)
+>>>>>>> e5f4478e466ed135085eb68ad645afc355701127
     destination = models.CharField(max_length=255)
     order_time = models.DateTimeField(auto_now=True)
     estimated_time = models.DateTimeField(null=True)
 
+<<<<<<< HEAD
 # Order와 Product의 관계를 나타내는 중간 모델
 class Order_Product(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1)
 
+=======
+>>>>>>> e5f4478e466ed135085eb68ad645afc355701127
 class Arm(models.Model):
     STATUS_CHOICES = [
         ('OP', 'Operating'),  # 작동 중

@@ -59,6 +59,7 @@ function DeliveryStatus({ cart }) {
             return true; // 모든 Arm이 정상이면 주문 가능
         };
 
+<<<<<<< HEAD
         const fetchData = () => {
             fetch(`${config.baseURL}api/agv/`, {
                 headers: {
@@ -112,6 +113,41 @@ function DeliveryStatus({ cart }) {
             clearInterval(intervalId);
             clearInterval(emptyCartIntervalId);
         };
+=======
+        fetch(`${config.baseURL}/api/agv/`, {
+            headers: {
+                'Authorization': `Token ${authState.token}`
+            }
+            })
+            .then(response => response.json())
+            .then(agvs => { console.log(agvs);
+                if (!checkAgvStatus(agvs)) {
+                    setStatus(false);
+                    setReason('준비상태의 AGV가 없습니다.');
+                    return;
+                }
+                fetch(`${config.baseURL}/api/arms/`, {
+                    headers: {
+                        'Authorization': `Token ${authState.token}`
+                    }
+                    })
+                    .then(response => response.json())
+                    .then(arms => {
+                        if (!checkArmStatus(cart, arms)) {
+                            setStatus(false);
+                            return;
+                        }
+
+                        if (!checkItemQuantity(cart)) {
+                            setStatus(false);
+                            setReason('아이템의 수량이 0 이하입니다.');
+                            return;
+                        }
+
+                        setStatus(true);
+                    });
+            });
+>>>>>>> e5f4478e466ed135085eb68ad645afc355701127
     }, [cart, authState.token]);
 
     // 상태와 이유를 반환합니다.
@@ -120,17 +156,27 @@ function DeliveryStatus({ cart }) {
 
 export default DeliveryStatus;
 
+<<<<<<< HEAD
 //import { useEffect, useState } from 'react';
 //import config from '../components/config.js';
 //import { useAuth } from '../components/AuthProvider.js';
+=======
+//import React, { useEffect, useState } from 'react';
+//import config from '../components/config.js';
+>>>>>>> e5f4478e466ed135085eb68ad645afc355701127
 
 //function DeliveryStatus({ cart }) {
 //    const [status, setStatus] = useState(null);
 //    const [reason, setReason] = useState('');
+<<<<<<< HEAD
 //    const { authState } = useAuth();
 
 //    useEffect(() => {
         
+=======
+
+//    useEffect(() => {
+>>>>>>> e5f4478e466ed135085eb68ad645afc355701127
 //        const checkItemQuantity = (items) => {
 //            for (let item of items) {
 //                if (item.quantity <= 0) {
@@ -141,6 +187,7 @@ export default DeliveryStatus;
 //        };
 
 //        const checkAgvStatus = (agvs) => {
+<<<<<<< HEAD
 //            if (!Array.isArray(agvs)) {
 //                console.error('agvs is not an array');
 //                return;
@@ -162,6 +209,20 @@ export default DeliveryStatus;
 //            }
         
 //            return hasRD || allMA; // 'RD' 상태의 AGV가 하나라도 있거나 모든 AGV가 'MA' 상태이면 true를 반환
+=======
+//            let hasRD = false;
+//            for (let agv of agvs) {
+//                if (agv.status === 'RD') {
+//                    hasRD = true;
+//                    break;
+//                }
+//                if (agv.status === 'MA') {
+//                    return false; // 하나라도 'MA' 상태라면 주문 불가능
+//                }
+//            }
+//            setReason('준비상태의 AGV가 없습니다. 배송이 오래 걸림니다.');
+//            return hasRD; // 'RD' 상태인 AGV가 존재하는지 반환
+>>>>>>> e5f4478e466ed135085eb68ad645afc355701127
 //        };
 
 //        const checkArmStatus = (items, arms) => {
@@ -182,6 +243,7 @@ export default DeliveryStatus;
 //            return true; // 모든 Arm이 정상이면 주문 가능
 //        };
 
+<<<<<<< HEAD
 //        fetch(`${config.baseURL}api/agv/`, {
 //            headers: {
 //                'Authorization': `Token ${authState.token}`
@@ -189,16 +251,26 @@ export default DeliveryStatus;
 //            })
 //            .then(response => response.json())
 //            .then(agvs => { console.log(agvs);
+=======
+//        fetch(`${config.baseURL}/api/agv/`)
+//            .then(response => response.json())
+//            .then(agvs => {
+>>>>>>> e5f4478e466ed135085eb68ad645afc355701127
 //                if (!checkAgvStatus(agvs)) {
 //                    setStatus(false);
 //                    setReason('준비상태의 AGV가 없습니다.');
 //                    return;
 //                }
+<<<<<<< HEAD
 //                fetch(`${config.baseURL}api/arms/`, {
 //                    headers: {
 //                        'Authorization': `Token ${authState.token}`
 //                    }
 //                    })
+=======
+
+//                fetch(`${config.baseURL}/api/arms/`)
+>>>>>>> e5f4478e466ed135085eb68ad645afc355701127
 //                    .then(response => response.json())
 //                    .then(arms => {
 //                        if (!checkArmStatus(cart, arms)) {
@@ -215,6 +287,7 @@ export default DeliveryStatus;
 //                        setStatus(true);
 //                    });
 //            });
+<<<<<<< HEAD
 //        fetch();
 //        const intervalId = setInterval(fetch, 5000);  // 매 5초마다 데이터를 요청합니다.
 //        // 컴포넌트가 언마운트되거나 종속성이 변경될 때 인터벌을 정리합니다.
@@ -226,3 +299,26 @@ export default DeliveryStatus;
 //}
 
 //export default DeliveryStatus;
+=======
+//    }, [cart]);
+
+//    return (
+//        <div>
+//            <div style={{ 
+//                height: '40px', 
+//                width: '99%', 
+//                backgroundColor: status ? 'green' : 'red', 
+//                margin: '10px', 
+//                borderRadius: '15px' 
+//            }}></div>
+//            {!status && <p style={{ 
+//                textAlign: 'center', 
+//                fontSize: '20px', 
+//                color: 'blue' 
+//            }}>{reason}</p>}
+//        </div>
+//    );
+//}
+
+//export default DeliveryStatus;
+>>>>>>> e5f4478e466ed135085eb68ad645afc355701127

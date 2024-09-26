@@ -1,10 +1,18 @@
 from rest_framework import viewsets, status
+<<<<<<< HEAD
 from .serializers import AgvSerializer, ArmSerializer, OrderSerializer
 from .serializers import OrderProductCountSerializer, OrderSendSerializer, RackSerializer, OrderListSerializer
 from .models import Agv, Arm, Order, Rack, Order_Product
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from django.http import JsonResponse
+=======
+from .serializers import AgvSerializer, ArmSerializer, OrderSerializer, OrderSendSerializer, RackSerializer
+from .models import Agv, Arm, Order, Rack
+from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.views import APIView
+>>>>>>> e5f4478e466ed135085eb68ad645afc355701127
 
 class AgvViewSet(viewsets.ModelViewSet):
     queryset = Agv.objects.all()
@@ -17,14 +25,24 @@ class ArmViewSet(viewsets.ModelViewSet):
 class RackViewSet(viewsets.ModelViewSet):
     queryset = Rack.objects.all()
     serializer_class = RackSerializer
+<<<<<<< HEAD
     
 class OrderViewSet(viewsets.ModelViewSet):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
+=======
+
+
+class OrderViewSet(viewsets.ModelViewSet):
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer
+    permission_classes = [IsAuthenticated]
+>>>>>>> e5f4478e466ed135085eb68ad645afc355701127
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         if not serializer.is_valid():
+<<<<<<< HEAD
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
@@ -36,6 +54,20 @@ class OrderViewSet(viewsets.ModelViewSet):
 class LatestOrderView(APIView):
     def get(self, request, username, format=None):
         # 사용자의 모든 주문을 가져옴
+=======
+            print("serializer.errors: ", serializer.errors)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        
+        # 유효성 검사를 통과한 경우에만 새로운 주문을 생성합니다.
+        self.perform_create(serializer)
+        headers = self.get_success_headers(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+    
+
+class LatestOrderView(APIView):
+    def get(self, request, username, format=None):
+        # 사용자의 모든 주문을 가져옵니다.
+>>>>>>> e5f4478e466ed135085eb68ad645afc355701127
         orders = Order.objects.filter(customer__username=username).order_by('-order_time')
         if orders.exists():
             # 가장 최근의 주문을 선택합니다.
@@ -45,6 +77,7 @@ class LatestOrderView(APIView):
             return Response(serializer.data)
         else:
             return Response({"message": "No orders found for this user."})
+<<<<<<< HEAD
     
     def patch(self, request, username, format=None):
         # 사용자의 모든 주문을 가져옴
@@ -56,6 +89,9 @@ class LatestOrderView(APIView):
             latest_order.save()
             return(Response({"message": "Order updated."}))
         return Response({"message": "No orders found for this user."})
+=======
+        
+>>>>>>> e5f4478e466ed135085eb68ad645afc355701127
 
 class UserOrdersView(APIView):
     def get(self, request, username, format=None):
@@ -68,6 +104,7 @@ class UserOrdersView(APIView):
         else:
             return Response({"message": "No orders found for this user."}, status=status.HTTP_404_NOT_FOUND)
 
+<<<<<<< HEAD
 class AllOrdersView(APIView):
     def get(self, request, format=None):
         # 모든 주문을 가져옵니다.
@@ -94,3 +131,5 @@ def my_agv(request):
         my_data = {'message': 'No order found'}
 
     return JsonResponse(my_data)
+=======
+>>>>>>> e5f4478e466ed135085eb68ad645afc355701127

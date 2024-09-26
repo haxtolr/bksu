@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from "./ui/button";
+<<<<<<< HEAD
 import { SheetTrigger, SheetContent, Sheet } from "./ui/sheet";
 import { useAuth } from './AuthProvider.js';
 import config from './config.js';
@@ -50,12 +51,45 @@ export default function Navi() {
     }, 60000); // 매 분마다 갱신
 
     return () => {
+=======
+//import { useNavigate } from 'react-router-dom';
+import { SheetTrigger, SheetContent, Sheet } from "./ui/sheet";
+import { useAuth } from './AuthProvider.js';
+import LogoutComponent from './Logout';
+
+
+export default function Navi() {
+  const { authState, } = useAuth(); // AuthProvider에서 제공하는 상태와 함수를 가져옵니다.
+  const [weeklyTime, setWeeklyTime] = useState(0);
+  const [dailyTime, setDailyTime] = useState(0);
+
+  useEffect(() => {
+    let weeklyTimer, dailyTimer;
+  
+    // 주간 타이머 시작
+    weeklyTimer = setInterval(() => {
+      if (authState) { // 로그인 상태일 때
+        setWeeklyTime((prevTime) => prevTime + 1);
+      }
+    }, 60000); // 매 분마다 갱신
+  
+    // 일일 타이머 시작
+    dailyTimer = setInterval(() => {
+      if (authState) { // 로그인 상태일 때
+        setDailyTime((prevTime) => prevTime + 1);
+      }
+    }, 60000); // 매 분마다 갱신
+  
+    return () => {
+      // 컴포넌트가 언마운트되면 타이머를 정리합니다.
+>>>>>>> e5f4478e466ed135085eb68ad645afc355701127
       clearInterval(weeklyTimer);
       clearInterval(dailyTimer);
     };
   }, [authState]);
 
   return (
+<<<<<<< HEAD
     <div key="1" className="flex h-16 w-full flex-col bg-[#e0e0ff]">
       <header className="flex h-16 w-full items-center justify-between bg-white px-4 shadow-md md:px-6">
         <div className="flex items-center">
@@ -68,6 +102,20 @@ export default function Navi() {
           <Link
             className="text-[#5b5b8c] hover:text-[#7070b0] focus:outline-none focus:ring-2 focus:ring-[#9090c0] focus:ring-offset-2 text-lg"
             to="/home"
+=======
+    <div key="1" className="flex h-16 w-full flex-col bg-[#e0e0ff]" >
+      <header className="flex h-16 w-full items-center justify-between bg-white px-4 shadow-md md:px-6" >
+        <div className="flex items-center">
+          <Link className="flex items-center" href="#">
+            <MountainIcon className="h-6 w-6 text-[#5b5b8c] " />
+            <span className="ml-2 text-xl font-bold text-[#5b5b8c]">EV</span>
+          </Link>
+        </div>
+        <nav className="hidden items-center space-x-6 md:flex">       
+          <Link
+            className="text-[#5b5b8c] hover:text-[#7070b0] focus:outline-none focus:ring-2 focus:ring-[#9090c0] focus:ring-offset-2 text-lg"
+            to ="/home"
+>>>>>>> e5f4478e466ed135085eb68ad645afc355701127
           >
             Home
           </Link>
@@ -75,7 +123,11 @@ export default function Navi() {
             className="text-[#5b5b8c] hover:text-[#7070b0] focus:outline-none focus:ring-2 focus:ring-[#9090c0] focus:ring-offset-2 text-lg"
             to="/check_order"
           >
+<<<<<<< HEAD
             주문
+=======
+            주문 
+>>>>>>> e5f4478e466ed135085eb68ad645afc355701127
           </Link>
           <Link
             className="text-[#5b5b8c] hover:text-[#7070b0] focus:outline-none focus:ring-2 focus:ring-[#9090c0] focus:ring-offset-2 text-lg"
@@ -85,7 +137,11 @@ export default function Navi() {
           </Link>
           <Link
             className="text-[#5b5b8c] hover:text-[#7070b0] focus:outline-none focus:ring-2 focus:ring-[#9090c0] focus:ring-offset-2 text-lg"
+<<<<<<< HEAD
             to="/myinfo"
+=======
+             to ="/myinfo"
+>>>>>>> e5f4478e466ed135085eb68ad645afc355701127
           >
             내 정보
           </Link>
@@ -99,19 +155,28 @@ export default function Navi() {
           </SheetTrigger>
           <SheetContent side="left">
             <div className="flex flex-col items-start space-y-6 p-6">
+<<<<<<< HEAD
               <Link className="flex items-center" to="/home">
+=======
+              <Link className="flex items-center" href="#">
+>>>>>>> e5f4478e466ed135085eb68ad645afc355701127
                 <MountainIcon className="h-6 w-6 text-[#5b5b8c] dark:text-white" />
                 <span className="ml-2 text-xl font-bold text-[#5b5b8c] dark:text-white">Acme Inc</span>
               </Link>
               <nav className="flex flex-col items-start space-y-4">
                 <Link
                   className="text-[#5b5b8c] hover:text-[#7070b0] focus:outline-none focus:ring-2 focus:ring-[#9090c0] focus:ring-offset-2 text-lg"
+<<<<<<< HEAD
                   to="/home"
+=======
+                  href="#"
+>>>>>>> e5f4478e466ed135085eb68ad645afc355701127
                 >
                   Home
                 </Link>
                 <Link
                   className="text-[#5b5b8c] hover:text-[#7070b0] focus:outline-none focus:ring-2 focus:ring-[#9090c0] focus:ring-offset-2 text-lg"
+<<<<<<< HEAD
                   to="/check_order"
                 >
                   주문
@@ -127,12 +192,36 @@ export default function Navi() {
                   to="/myinfo"
                 >
                   내 정보
+=======
+                  href="#"
+                >
+                  Title 1
+                </Link>
+                <Link
+                  className="text-[#5b5b8c] hover:text-[#7070b0] focus:outline-none focus:ring-2 focus:ring-[#9090c0] focus:ring-offset-2 text-lg"
+                  href="#"
+                >
+                  Title 2
+                </Link>
+                <Link
+                  className="text-[#5b5b8c] hover:text-[#7070b0] focus:outline-none focus:ring-2 focus:ring-[#9090c0] focus:ring-offset-2 text-lg"
+                  href="#"
+                >
+                  Title 3
+                </Link>
+                <Link
+                  className="text-[#5b5b8c] hover:text-[#7070b0] focus:outline-none focus:ring-2 focus:ring-[#9090c0] focus:ring-offset-2 text-lg"
+                  href="#"
+                >
+                  Title 4
+>>>>>>> e5f4478e466ed135085eb68ad645afc355701127
                 </Link>
               </nav>
             </div>
           </SheetContent>
         </Sheet>
         <div className="flex items-center space-x-4">
+<<<<<<< HEAD
           <span className="ml-2 text-xl font-bold text-[#5b5b8c]">{authState.isLoggedIn && <span>{authState.username}</span>}</span>
           <div className="flex items-center space-x-2">
             <ClockIcon className="h-5 w-5 text-[#5b5b8c]" />
@@ -160,6 +249,25 @@ export default function Navi() {
   );
 }
 
+=======
+        <span className="ml-2 text-xl font-bold text-[#5b5b8c]">{authState.isLoggedIn && <span>{authState.username}</span>}  </span>
+          <div className="flex items-center space-x-2">
+            <ClockIcon className="h-5 w-5 text-[#5b5b8c]" />
+            <span className="text-[#5b5b8c]">주간: {weeklyTime}</span>
+          </div>
+          <div className="flex items-center space-x-2">
+            <ClockIcon className="h-5 w-5 text-[#5b5b8c]" />
+            <span className="text-[#5b5b8c]">오늘 : {dailyTime}</span>
+          </div>
+          <LogoutComponent />
+        </div>
+      </header>
+    </div>
+  )
+}
+
+
+>>>>>>> e5f4478e466ed135085eb68ad645afc355701127
 function ClockIcon(props) {
   return (
     <svg
@@ -177,9 +285,16 @@ function ClockIcon(props) {
       <circle cx="12" cy="12" r="10" />
       <polyline points="12 6 12 12 16 14" />
     </svg>
+<<<<<<< HEAD
   );
 }
 
+=======
+  )
+}
+
+
+>>>>>>> e5f4478e466ed135085eb68ad645afc355701127
 function MenuIcon(props) {
   return (
     <svg
@@ -198,9 +313,16 @@ function MenuIcon(props) {
       <line x1="4" x2="20" y1="6" y2="6" />
       <line x1="4" x2="20" y1="18" y2="18" />
     </svg>
+<<<<<<< HEAD
   );
 }
 
+=======
+  )
+}
+
+
+>>>>>>> e5f4478e466ed135085eb68ad645afc355701127
 function MountainIcon(props) {
   return (
     <svg
@@ -217,5 +339,9 @@ function MountainIcon(props) {
     >
       <path d="m8 3 4 8 5-5 5 15H2L8 3z" />
     </svg>
+<<<<<<< HEAD
   );
+=======
+  )
+>>>>>>> e5f4478e466ed135085eb68ad645afc355701127
 }

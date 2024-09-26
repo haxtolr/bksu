@@ -10,11 +10,14 @@
     "@material-ui/icons": "^4.11.3",
     "@mui/icons-material": "^5.15.17",
     "@mui/material": "^5.15.17",
+<<<<<<< HEAD
     "@mui/x-charts": "^7.6.2",
     "@nivo/bar": "^0.87.0",
     "@nivo/core": "^0.87.0",
     "@nivo/line": "^0.87.0",
     "@nivo/pie": "^0.87.0",
+=======
+>>>>>>> e5f4478e466ed135085eb68ad645afc355701127
     "@radix-ui/react-checkbox": "^1.0.4",
     "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-label": "^2.0.2",

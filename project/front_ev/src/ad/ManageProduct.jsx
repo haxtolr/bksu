@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // ManaedProduct.jsx
 import React, { useState, useEffect } from 'react';
 import {
@@ -289,4 +290,15 @@ function ManageProduct({ authToken }) {
 );
 }
 
+=======
+import React from "react";
+
+function ManageProduct() {
+    return (
+        <div>
+        <h2>ManageProduct</h2>
+        </div>
+    );
+    }
+>>>>>>> e5f4478e466ed135085eb68ad645afc355701127
 export default ManageProduct;

@@ -57,7 +57,11 @@ export default function LoginComponent() {
                       token: response.data.user.token, 
                       is_staff: response.data.user.is_staff 
         }); // 로그인 상태 업데이트
+<<<<<<< HEAD
         if(response.data.user.is_staff === true)
+=======
+        if(response.data.user.is_staff == true)
+>>>>>>> e5f4478e466ed135085eb68ad645afc355701127
           navigate('/ManageHome');  // 관리자 화면으로 이동
         else        
           navigate('/home');  // 홈 화면으로 이동
@@ -96,11 +100,19 @@ export default function LoginComponent() {
         </div>
         <div className="space-y-4">
           <div>
+<<<<<<< HEAD
             <Label className="text-[#060b14]" htmlFor="username">
               아이디
             </Label>
             <Input
               className="mt-1 w-full rounded-md border border-[#060b14] bg-[#f8f8f8] px-3 py-2 text-[#000000] placeholder:text-[#a0a0b0] focus:border-[#9090c0] focus:outline-none "
+=======
+            <Label className="text-[#5b5b8c]" htmlFor="username">
+              아이디
+            </Label>
+            <Input
+              className="mt-1 w-full rounded-md border border-[#d0d0e0] bg-[#f8f8f8] px-3 py-2 text-[#5b5b8c] placeholder:text-[#a0a0b0] focus:border-[#9090c0] focus:outline-none "
+>>>>>>> e5f4478e466ed135085eb68ad645afc355701127
               id="username"
               placeholder="아이디를 입력해주세요."
               type="text"
@@ -109,11 +121,19 @@ export default function LoginComponent() {
             />
           </div>
           <div>
+<<<<<<< HEAD
             <Label className="text-[#060b14]" htmlFor="password">
               비밀번호
             </Label>
             <Input
               className="mt-1 w-full rounded-md border border-[#060b14] bg-[#f8f8f8] px-3 py-2 text-[#000000] placeholder:text-[#a0a0b0] focus:border-[#9090c0] focus:outline-none "
+=======
+            <Label className="text-[#5b5b8c]" htmlFor="password">
+              비밀번호
+            </Label>
+            <Input
+              className="mt-1 w-full rounded-md border border-[#d0d0e0] bg-[#f8f8f8] px-3 py-2 text-[#5b5b8c] placeholder:text-[#a0a0b0] focus:border-[#9090c0] focus:outline-none "
+>>>>>>> e5f4478e466ed135085eb68ad645afc355701127
               id="password"
               placeholder="비밀번호를 입력해주세요"
               type="password"
